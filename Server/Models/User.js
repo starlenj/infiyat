@@ -2,7 +2,7 @@ const Restful = require("node-restful");
 const mongoose = Restful.mongoose;
 const UserSchema = new mongoose.Schema({
   name: { type: String, require: true },
-  email: { type: String, require: true },
+  email: { type: String, require: true, unique: true },
   password: { type: String, require: true },
   status: { type: Boolean, default: false },
   emailSubmitDate: { type: String },
