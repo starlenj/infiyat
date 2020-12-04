@@ -3,6 +3,6 @@ const Model = require("../../Models/User");
 const Router = Express.Router();
 
 Model.methods(["get", "post", "put", "delete"]);
-Model.register(Router, "/Users");
+Model.register(Router, "/User");
 
 module.exports = Router;
