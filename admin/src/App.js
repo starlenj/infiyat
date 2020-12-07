@@ -7,12 +7,18 @@ import "react-toastify/dist/ReactToastify.css";
 import Login from "./Pages/Login";
 import Home from "./Pages/Home";
 import User from "./Pages/User";
+import Category from "./Pages/Category";
 const Root = ({ refetch, session }) => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" render={() => <Home session={session} />} />
       <Route exact path="/Login" render={() => <Login />} />
       <Route exact path="/User" render={() => <User session={session} />} />
+      <Route
+        exact
+        path="/Category"
+        render={() => <Category session={session} />}
+      />
       <Route
         exact
         path="/User/Logout"
