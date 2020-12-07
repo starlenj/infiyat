@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/starlenj/infiyat#readme",
   "dependencies": {
-    "draft-js": "^0.11.7"
+    "draft-js": "^0.11.7",
+    "redux-forms-markdown-editor": "^1.1.8"
   }
 }

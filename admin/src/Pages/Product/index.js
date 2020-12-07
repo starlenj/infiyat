@@ -36,11 +36,7 @@ class Product extends Component {
     }
   }
   async HandleSubmit(value) {
-    let response = await Put(
-      "Product",
-      value,
-      this.props.DataTableReducer.SelectData._id
-    );
+    let response = await Post("Product", value);
     if (response) {
       toast.success("İşlem Başarılı");
       setTimeout(() => window.location.reload(), 2000);
@@ -48,25 +44,16 @@ class Product extends Component {
   }
 
   async HandleUpdate(value) {
-    let response = await Post("Product", value);
+    let response = await Put("Product", value, value._id);
     if (response) {
       toast.success("İşlem Başarılı");
       setTimeout(() => window.location.reload(), 2000);
     }
   }
   async componentDidMount() {
-    let ProductData = await List("Product");
-    let ProductFilterData = [];
-    ProductData.map(async (Product) => {
-      let response = await Get("Category", Product.CategoryId);
-      ProductFilterData.push({
-        ...Product,
-        Category: response.Name,
-      });
-    });
-    let Category = await List("Category");
-    let UserData = [];
-    const columns = [
+    await this.GetDataTable();
+
+    const Columns = [
       {
         name: "Adı",
         selector: "Name",
@@ -88,12 +75,23 @@ class Product extends Component {
         sortable: true,
       },
     ];
-
-    this.setState({ Data: UserData, Columns: columns });
+    this.setState({ Columns });
+  }
+  async GetDataTable() {
+    const ProductData = await List("Product");
+    const ProductFilterData = [];
+    ProductData.map(async (Product) => {
+      let response = await Get("Category", Product.CategoryId);
+      ProductFilterData.push({
+        ...Product,
+        Category: response.Name,
+      });
+      this.setState({ Data: ProductFilterData });
+    });
   }
   render() {
     const { SelectData } = this.props.DataTableReducer;
-    const NewModal = () => <NewForm onSubmit={this.HandleUpdate} />;
+    const NewModal = () => <NewForm onSubmit={this.HandleSubmit} />;
     const UpdateModal = () => (
       <div className="column">
         {this.state.EditStatsus === true && (
@@ -135,7 +133,10 @@ class Product extends Component {
           </div>
         )}
         {this.state.EditStatsus === false && (
-          <EditForm onSubmit={this.HandleSubmit} />
+          <EditForm
+            onSubmit={this.HandleUpdate}
+            FormValues={this.props.DataTableReducer.SelectData}
+          />
         )}
         {this.state.EditStatsus === false && (
           <div>

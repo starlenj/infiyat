@@ -119,6 +119,8 @@ class DataTableComponent extends Component {
                   <Modal
                     show={this.state.ShowNewModal}
                     onHide={this.HandleCloseNewModal}
+                    size="lg"
+                    closeButton
                   >
                     <Modal.Header>
                       <Modal.Title>{this.props.NewDataTitle}</Modal.Title>
@@ -129,6 +131,7 @@ class DataTableComponent extends Component {
                 <Modal
                   show={this.state.ShowUpdateModal}
                   onHide={this.HandleCloseUpdateModal}
+                  closeButton
                 >
                   <Modal.Header>
                     <Modal.Title>{this.props.UpdateDataTitle}</Modal.Title>

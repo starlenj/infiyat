@@ -1,17 +1,33 @@
 import { Component, React } from "react";
 import { Field, reduxForm } from "redux-form";
+import { List } from "../../../Helper/Service";
+import { Editor, EditorState } from "draft-js";
+import "draft-js/dist/Draft.css";
+import ReactMDE from "redux-forms-markdown-editor";
+import { connect } from "react-redux";
 
-class CategoryNewForm extends Component {
-  constructor(props) {
-    super(props);
+class ProductUpdateForm extends Component {
+  state = { Category: [], editorState: EditorState.createEmpty() };
+  async componentDidMount() {
+    let Category = await List("Category");
+    this.setState({ Category });
+    this.props.initialize(this.props.FormValues);
   }
-  Submit(values) {
-    console.log(values);
-  }
-
   render() {
+    const TextEditor = ({ input }) => (
+      <Editor editorState={this.state.editorState} {...input} />
+    );
     return (
       <form onSubmit={this.props.handleSubmit}>
+        <div className="form-group">
+          <Field name="CategoryId" className="form-control" component="select">
+            <option>--Lütfen Kategori Seçiniz--</option>
+            {this.state.Category.length > 0 &&
+              this.state.Category.map((Category) => (
+                <option value={Category._id}>{Category.Name}</option>
+              ))}
+          </Field>
+        </div>
         <div className="form-group">
           <label htmlFor="firstName">Adı :</label>
           <Field
@@ -20,6 +36,19 @@ class CategoryNewForm extends Component {
             className="form-control"
             type="text"
           />
+        </div>
+        <div className="form-group">
+          <label htmlFor="firstName">Fiyat :</label>
+          <Field
+            name="Price"
+            component="input"
+            className="form-control"
+            type="number"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="firstName">Açıklama :</label>
+          <Field name="Info" component={ReactMDE} />
         </div>
         <button type="submit" className="btn btn-primary">
           Kaydet
@@ -30,8 +59,8 @@ class CategoryNewForm extends Component {
   }
 }
 
-CategoryNewForm = reduxForm({
+ProductUpdateForm = reduxForm({
   // a unique name for the form
-  form: "Category-New-Form",
-})(CategoryNewForm);
-export default CategoryNewForm;
+  form: "Product-Update-Form",
+})(ProductUpdateForm);
+export default ProductUpdateForm;

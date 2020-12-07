@@ -1,13 +1,20 @@
 import { Component, React } from "react";
 import { Field, reduxForm } from "redux-form";
 import { List } from "../../../Helper/Service";
+import { Editor, EditorState } from "draft-js";
+import "draft-js/dist/Draft.css";
+import ReactMDE from "redux-forms-markdown-editor";
+
 class ProductNewForm extends Component {
-  state = { Category: [] };
+  state = { Category: [], editorState: EditorState.createEmpty() };
   async componentDidMount() {
     let Category = await List("Category");
     this.setState({ Category });
   }
   render() {
+    const TextEditor = ({ input }) => (
+      <Editor editorState={this.state.editorState} {...input} />
+    );
     return (
       <form onSubmit={this.props.handleSubmit}>
         <div className="form-group">
@@ -38,22 +45,8 @@ class ProductNewForm extends Component {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="firstName">Ürün Görseli :</label>
-          <Field
-            name="Picture"
-            component="input"
-            className="form-control"
-            type="file"
-          />
-        </div>
-        <div className="form-group">
           <label htmlFor="firstName">Açıklama :</label>
-          <Field
-            name="Info"
-            component="input"
-            className="form-control"
-            type="textarea"
-          />
+          <Field name="Info" component={ReactMDE} />
         </div>
         <button type="submit" className="btn btn-primary">
           Kaydet
