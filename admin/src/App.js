@@ -8,12 +8,18 @@ import Login from "./Pages/Login";
 import Home from "./Pages/Home";
 import User from "./Pages/User";
 import Category from "./Pages/Category";
+import Product from "./Pages/Product";
 const Root = ({ refetch, session }) => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" render={() => <Home session={session} />} />
       <Route exact path="/Login" render={() => <Login />} />
       <Route exact path="/User" render={() => <User session={session} />} />
+      <Route
+        exact
+        path="/Product"
+        render={() => <Product session={session} />}
+      />
       <Route
         exact
         path="/Category"

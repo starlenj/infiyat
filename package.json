@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/starlenj/infiyat/issues"
   },
-  "homepage": "https://github.com/starlenj/infiyat#readme"
+  "homepage": "https://github.com/starlenj/infiyat#readme",
+  "dependencies": {
+    "draft-js": "^0.11.7"
+  }
 }

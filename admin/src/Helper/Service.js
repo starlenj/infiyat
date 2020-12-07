@@ -60,3 +60,16 @@ export const Delete = async (RequestUrl, id) => {
     toast.error("Veri Çekme İşlemi Başarısız..");
   }
 };
+
+export const Get = async (RequestUrl, id) => {
+  try {
+    let Response = await axios.get(URL + RequestUrl + "/" + id);
+    if (Response.data) {
+      return Response.data;
+    } else {
+      return [];
+    }
+  } catch (e) {
+    toast.error("Veri Çekme İşlemi Başarısız..");
+  }
+};
