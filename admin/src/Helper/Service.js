@@ -22,3 +22,41 @@ export const Post = async (RequestUrl, Data) => {
     return e;
   }
 };
+
+export const List = async (RequestUrl) => {
+  try {
+    let Response = await axios.get(URL + RequestUrl);
+    if (Response.data) {
+      return Response.data;
+    } else {
+      return [];
+    }
+  } catch (e) {
+    toast.error("Veri Çekme İşlemi Başarısız..");
+  }
+};
+
+export const Put = async (RequestUrl, data, id) => {
+  try {
+    let Response = await axios.put(URL + RequestUrl + "/" + id, data);
+    if (Response.data) {
+      return Response.data;
+    } else {
+      return [];
+    }
+  } catch (e) {
+    toast.error("Veri Çekme İşlemi Başarısız..");
+  }
+};
+export const Delete = async (RequestUrl, id) => {
+  try {
+    let Response = await axios.delete(URL + RequestUrl + "/" + id);
+    if (Response.data) {
+      return Response.data;
+    } else {
+      return [];
+    }
+  } catch (e) {
+    toast.error("Veri Çekme İşlemi Başarısız..");
+  }
+};

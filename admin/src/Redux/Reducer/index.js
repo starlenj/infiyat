@@ -1,6 +1,11 @@
 import { combineReducers } from "redux";
 import UserReducer from "./User";
-
-const rootReducer = combineReducers({ UserReducer });
+import DataTableReducer from "./DataTable";
+import { reducer as FormReducer } from "redux-form";
+const rootReducer = combineReducers({
+  UserReducer,
+  DataTableReducer,
+  form: FormReducer,
+});
 
 export default rootReducer;

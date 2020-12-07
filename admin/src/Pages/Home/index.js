@@ -1,8 +1,12 @@
-import { useEffect } from "react";
-
+import Header from "../../Component/Header";
+import SideBar from "../../Component/SideBar";
 function Home({ session }) {
-  useEffect(() => {});
-  return <div>Home</div>;
+  return (
+    <div>
+      <Header Oturum={session} />
+      <SideBar Oturum={session} />
+    </div>
+  );
 }
 
 export default Home;
