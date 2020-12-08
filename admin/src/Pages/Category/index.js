@@ -48,6 +48,8 @@ class Category extends Component {
   }
 
   async HandleUpdate(value) {
+    console.log(value);
+
     let response = await Post("Category", value);
     if (response) {
       toast.success("İşlem Başarılı");

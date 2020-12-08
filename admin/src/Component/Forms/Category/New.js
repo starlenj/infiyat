@@ -28,14 +28,9 @@ class CategoryNewForm extends Component {
             component={Input}
             className="form-control"
             type="text"
-            validate={this.Valid}
           />
         </div>
-        <button
-          type="submit"
-          disabled={!this.props.valid}
-          className="btn btn-primary"
-        >
+        <button type="submit" className="btn btn-primary">
           Kaydet
         </button>
         <br />

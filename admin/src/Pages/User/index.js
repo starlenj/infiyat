@@ -145,7 +145,10 @@ class User extends Component {
           </div>
         )}
         {this.state.EditStatsus === false && (
-          <EditForm onSubmit={this.HandleSubmit} />
+          <EditForm
+            onSubmit={this.HandleSubmit}
+            FormValues={this.props.DataTableReducer.SelectData}
+          />
         )}
         {this.state.EditStatsus === false && (
           <div>

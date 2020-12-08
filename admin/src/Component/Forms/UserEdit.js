@@ -8,6 +8,9 @@ class UserEditForm extends Component {
   Submit(values) {
     console.log(values);
   }
+  componentDidMount() {
+    this.props.initialize(this.props.FormValues);
+  }
 
   render() {
     return (
