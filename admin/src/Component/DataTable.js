@@ -80,13 +80,15 @@ class DataTableComponent extends Component {
             <div class="content">
               <div class="card">
                 <div class="card-body">
-                  <button
-                    type="button"
-                    class="btn bg-primary"
-                    onClick={() => this.setState({ ShowNewModal: true })}
-                  >
-                    <i class="mi-add"></i>Yeni
-                  </button>{" "}
+                  {this.props.NewData === true && (
+                    <button
+                      type="button"
+                      class="btn bg-primary"
+                      onClick={() => this.setState({ ShowNewModal: true })}
+                    >
+                      <i class="mi-add"></i>Yeni
+                    </button>
+                  )}
                   <br />
                   <br />
                   <br />
@@ -110,7 +112,8 @@ class DataTableComponent extends Component {
                     responsive={true}
                     onRowClicked={(data) => {
                       if (data !== undefined) this.props.SetSelectData(data);
-                      this.setState({ ShowUpdateModal: true });
+                      if (this.props.UpdateData)
+                        this.setState({ ShowUpdateModal: true });
                     }}
                     noDataComponent={
                       <div>Gösterilecek Veri Bulunmamaktadır</div>

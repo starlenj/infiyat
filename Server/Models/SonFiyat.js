@@ -4,11 +4,13 @@ const OptionsSchema = new mongoose.Schema(
   {
     UserId: { type: String, require: true },
     Status: { type: Boolean, default: true },
-    ResponseUserId: { type: String, require: true },
+    ProductId: { type: String, require: true },
+    Order: { type: Number, default: 0 },
+    Price: { type: String, default: 0 },
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = Restful.model("TicketHeader", OptionsSchema);
+module.exports = Restful.model("SonFiyat", OptionsSchema);

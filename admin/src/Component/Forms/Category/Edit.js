@@ -2,13 +2,9 @@ import { Component, React } from "react";
 import { Field, reduxForm } from "redux-form";
 
 class CategoryNewForm extends Component {
-  constructor(props) {
-    super(props);
+  async componentDidMount() {
+    this.props.initialize(this.props.FormValues);
   }
-  Submit(values) {
-    console.log(values);
-  }
-
   render() {
     return (
       <form onSubmit={this.props.handleSubmit}>
@@ -21,6 +17,16 @@ class CategoryNewForm extends Component {
             type="text"
           />
         </div>
+        <div className="form-group">
+          <label htmlFor="firstName">Kategori Fiyatı :</label>
+          <Field
+            name="Name"
+            component="input"
+            className="form-control"
+            type="number"
+          />
+        </div>
+
         <button type="submit" className="btn btn-primary">
           Kaydet
         </button>

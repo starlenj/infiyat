@@ -3,20 +3,15 @@ import { connect } from "react-redux";
 import DataTableComponent from "../../Component/DataTable";
 import { List, Post, Put, Delete } from "../../Helper/Service";
 import { SetSelectData } from "../../Redux/Action/DataTable";
-import EditForm from "../../Component/Forms/UserEdit";
-import NewForm from "../../Component/Forms/NewUser";
+import EditForm from "../../Component/Forms/Pages/Edit";
+import NewForm from "../../Component/Forms/Pages/New";
 import { toast } from "react-toastify";
 
-class User extends Component {
+class Pages extends Component {
   state = {
     Data: [],
     Columns: [],
     SelectUser: [],
-    Email: "",
-    Name: "",
-    Tc: "",
-    Phone: "",
-    id: "",
     UpdateStatus: false,
     DeleteStatus: false,
     EditStatsus: true,
@@ -32,7 +27,7 @@ class User extends Component {
   }
   async HandleDelete() {
     const response = await Delete(
-      "User",
+      "Pages",
       this.props.DataTableReducer.SelectData._id
     );
     if (response) {
@@ -42,7 +37,7 @@ class User extends Component {
   }
   async HandleSubmit(value) {
     let response = await Put(
-      "User",
+      "Pages",
       value,
       this.props.DataTableReducer.SelectData._id
     );
@@ -53,23 +48,23 @@ class User extends Component {
   }
 
   async HandleUpdate(value) {
-    let response = await Post("User", value);
+    let response = await Post("Pages", value);
     if (response) {
       toast.success("İşlem Başarılı");
       setTimeout(() => window.location.reload(), 2000);
     }
   }
   async componentDidMount() {
-    let UserData = await List("User");
+    let UserData = await List("Pages");
     const columns = [
       {
-        name: "Adı",
-        selector: "Name",
+        name: "Başlık",
+        selector: "Title",
         sortable: true,
       },
       {
-        name: "E-Posta",
-        selector: "Email",
+        name: "Link",
+        selector: "Url",
         sortable: true,
       },
     ];
@@ -83,39 +78,14 @@ class User extends Component {
       <div className="column">
         {this.state.EditStatsus === true && (
           <div className="form-group">
-            <label>Adı : </label>
+            <label>Name : </label>
             <input
               type="text"
               className="form-control"
               name="Name"
-              value={SelectData.Name}
-              readOnly={this.state.EditStatsus}
-            />
-          </div>
-        )}
-        {this.state.EditStatsus === true && (
-          <div className="form-group">
-            <label>Email : </label>
-            <input
-              type="text"
-              className="form-control"
-              name="Name"
-              value={SelectData.Email}
+              value={SelectData.Title}
               onChange={this.HandleInput}
               readOnly={true}
-            />
-          </div>
-        )}
-        {this.state.EditStatsus === true && (
-          <div className="form-group">
-            <label>Tc : </label>
-            <input
-              type="text"
-              className="form-control"
-              name="Tc"
-              value={SelectData.Tc}
-              onChange={this.HandleInput}
-              readOnly={this.state.EditStatsus}
             />
           </div>
         )}
@@ -168,14 +138,14 @@ class User extends Component {
     return (
       <div>
         <DataTableComponent
-          NewDataTitle={"Yeni Kullanıcı Tanımı"}
-          UpdateDataTitle={"Kullanıcı Düzenle"}
+          NewDataTitle={"Yeni Sayfa Tanımı"}
+          UpdateDataTitle={"Sayfa Düzenle"}
           NewModal={<NewModal />}
           columns={this.state.Columns}
           session={this.props.session}
           data={this.state.Data}
-          title={"Kullanıcı Listesi"}
-          filterField={"Name"}
+          title={"Sayfa Listesi"}
+          filterField={"Title"}
           UpdateModal={<UpdateModal />}
           UpdateAction={this.UpdateUser}
           UpdateData={true}
@@ -194,4 +164,4 @@ const mapStateToProps = ({ DataTableReducer }) => {
 const mapDispatchToProps = {
   SetSelectData,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default connect(mapStateToProps, mapDispatchToProps)(Pages);

@@ -106,19 +106,19 @@ function SideBar({ Oturum }) {
               </a>
             </li>
             <li class="nav-item">
-              <a href="/" class="nav-link ">
+              <a href="/Order" class="nav-link ">
                 <i class="icon-copy"></i>
                 <span>Siparişler</span>
               </a>
             </li>
             <li class="nav-item">
-              <a href="/" class="nav-link ">
+              <a href="/Odeme" class="nav-link ">
                 <i class="icon-copy"></i>
                 <span>Ödeme Dökümleri</span>
               </a>
             </li>
             <li class="nav-item">
-              <a href="/" class="nav-link ">
+              <a href="/Pages" class="nav-link ">
                 <i class="icon-copy"></i>
                 <span>Sayfalar</span>
               </a>

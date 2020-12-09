@@ -9,12 +9,19 @@ import Home from "./Pages/Home";
 import User from "./Pages/User";
 import Category from "./Pages/Category";
 import Product from "./Pages/Product";
+import Order from "./Pages/Order";
+import Odeme from "./Pages/Odeme";
+import Pages from "./Pages/Page";
+
 const Root = ({ refetch, session }) => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" render={() => <Home session={session} />} />
       <Route exact path="/Login" render={() => <Login />} />
       <Route exact path="/User" render={() => <User session={session} />} />
+      <Route exact path="/Order" render={() => <Order session={session} />} />
+      <Route exact path="/Odeme" render={() => <Odeme session={session} />} />
+      <Route exact path="/Pages" render={() => <Pages session={session} />} />
       <Route
         exact
         path="/Product"

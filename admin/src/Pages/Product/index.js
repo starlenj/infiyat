@@ -166,6 +166,9 @@ class Product extends Component {
           filterField={"Name"}
           UpdateModal={<UpdateModal />}
           UpdateAction={this.UpdateUser}
+          UpdateData={true}
+          DeleteData={true}
+          NewData={true}
         />
       </div>
     );

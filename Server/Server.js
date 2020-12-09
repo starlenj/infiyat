@@ -29,6 +29,10 @@ app.use("/Api/V1", require("./Route/Api/Reserve"));
 app.use("/Api/V1", require("./Route/Api/UserHareket"));
 app.use("/Api/V1", require("./Route/Api/UserInvite"));
 app.use("/Api/V1", require("./Route/Api/Auth"));
+app.use("/Api/V1", require("./Route/Api/OrderHeader"));
+app.use("/Api/V1", require("./Route/Api/OrderBody"));
+app.use("/Api/V1", require("./Route/Api/TicketHeader"));
+app.use("/Api/V1", require("./Route/Api/TicketBody"));
 
 app.listen(process.env.PORT, () => {
   console.log(`APP STARTED ${process.env.PORT}`);

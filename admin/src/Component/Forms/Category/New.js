@@ -30,6 +30,15 @@ class CategoryNewForm extends Component {
             type="text"
           />
         </div>
+        <div className="form-group">
+          <label htmlFor="firstName">Kategori Fiyatı :</label>
+          <Field
+            name="Price"
+            component="input"
+            className="form-control"
+            type="number"
+          />
+        </div>
         <button type="submit" className="btn btn-primary">
           Kaydet
         </button>

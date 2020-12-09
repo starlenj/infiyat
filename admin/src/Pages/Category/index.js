@@ -112,7 +112,10 @@ class Category extends Component {
           </div>
         )}
         {this.state.EditStatsus === false && (
-          <EditForm onSubmit={this.HandleSubmit} />
+          <EditForm
+            onSubmit={this.HandleSubmit}
+            FormValues={this.props.DataTableReducer.SelectData}
+          />
         )}
         {this.state.EditStatsus === false && (
           <div>
@@ -142,6 +145,9 @@ class Category extends Component {
           filterField={"Name"}
           UpdateModal={<UpdateModal />}
           UpdateAction={this.UpdateUser}
+          UpdateData={true}
+          DeleteData={true}
+          NewData={true}
         />
       </div>
     );
