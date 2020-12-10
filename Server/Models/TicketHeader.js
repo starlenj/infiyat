@@ -3,7 +3,9 @@ const mongoose = Restful.mongoose;
 const OptionsSchema = new mongoose.Schema(
   {
     UserId: { type: String, require: true },
-    Status: { type: Boolean, default: true },
+    UserName: { type: String, require: true },
+    Title: { type: String, require: true },
+    Status: { type: Number, default: 1 },
     ResponseUserId: { type: String, require: true },
   },
   {

@@ -127,7 +127,7 @@ function SideBar({ Oturum }) {
               <i class="icon-menu" title="Raporlar"></i>
             </li>
             <li class="nav-item nav-item-submenu">
-              <a href="#" class="nav-link">
+              <a href="/Ticket" class="nav-link">
                 <i class="icon-file-css"></i>
                 <span>Destek Talepleri</span>
               </a>
@@ -136,7 +136,7 @@ function SideBar({ Oturum }) {
                 data-submenu-title="Şube  & Transfer"
               >
                 <li class="nav-item">
-                  <a href="alpaca_advanced.html" class="nav-link">
+                  <a href="" class="nav-link">
                     Destek Talepleri
                   </a>
                 </li>
