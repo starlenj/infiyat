@@ -2,8 +2,9 @@ const Restful = require("node-restful");
 const mongoose = Restful.mongoose;
 const OptionsSchema = new mongoose.Schema(
   {
-    Status: { type: Boolean, default: true },
-    Message: { type: String, default: 0 },
+    Message: { type: String, require: true },
+    HeaderId: { type: String, require: true },
+    MessageType: { type: String, require: true },
   },
   {
     timestamps: true,

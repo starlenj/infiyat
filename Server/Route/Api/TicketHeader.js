@@ -11,4 +11,9 @@ Router.post("/SetTicketStatus", async (req, res) => {
   let ResultData = await UpdateData.save();
   HandleResponse(req, res, "Kayıt Güncellendi", ResultData);
 });
+Router.post("/GetTicket", async (req, res) => {
+  const { TicketType } = req.body;
+  let ResponseData = await Model.find({ TicketType });
+  HandleResponse(req, res, null, ResponseData);
+});
 module.exports = Router;

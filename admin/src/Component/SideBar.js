@@ -141,13 +141,8 @@ function SideBar({ Oturum }) {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="alpaca_basic.html" class="nav-link">
+                  <a href="/Soru" class="nav-link">
                     Sorular
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="alpaca_advanced.html" class="nav-link">
-                    SSS
                   </a>
                 </li>
               </ul>

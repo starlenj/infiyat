@@ -6,7 +6,7 @@ const OptionsSchema = new mongoose.Schema(
     UserName: { type: String, require: true },
     Title: { type: String, require: true },
     Status: { type: Number, default: 1 },
-    ResponseUserId: { type: String, require: true },
+    TicketType: { type: String, default: "Ticket" },
   },
   {
     timestamps: true,

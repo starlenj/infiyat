@@ -62,7 +62,7 @@ class Ticket extends Component {
   }
   async componentDidMount() {
     var ticketData = [];
-    let TicketHeaderData = await Post("GetTicket", { TicketType: "Ticket" });
+    let TicketHeaderData = await Post("GetTicket", { TicketType: "Soru" });
     if (TicketHeaderData.data) {
       TicketHeaderData.data.map(async (Header) => {
         let Body = await Post("/GetBody", {
@@ -241,7 +241,7 @@ class Ticket extends Component {
           columns={this.state.Columns}
           session={this.props.session}
           data={this.state.Data}
-          title={"Ticket Listesi"}
+          title={"Soru Listesi"}
           filterField={"UserName"}
           UpdateModal={<UpdateModal />}
           UpdateAction={this.UpdateUser}

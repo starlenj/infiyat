@@ -13,6 +13,7 @@ import Order from "./Pages/Order";
 import Odeme from "./Pages/Odeme";
 import Pages from "./Pages/Page";
 import Ticket from "./Pages/Ticket";
+import Soru from "./Pages/Soru";
 
 const Root = ({ refetch, session }) => (
   <BrowserRouter>
@@ -24,6 +25,7 @@ const Root = ({ refetch, session }) => (
       <Route exact path="/Odeme" render={() => <Odeme session={session} />} />
       <Route exact path="/Pages" render={() => <Pages session={session} />} />
       <Route exact path="/Ticket" render={() => <Ticket session={session} />} />
+      <Route exact path="/Soru" render={() => <Soru session={session} />} />
       <Route
         exact
         path="/Product"
