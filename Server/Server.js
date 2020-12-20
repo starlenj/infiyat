@@ -33,7 +33,12 @@ app.use("/Api/V1", require("./Route/Api/OrderHeader"));
 app.use("/Api/V1", require("./Route/Api/OrderBody"));
 app.use("/Api/V1", require("./Route/Api/TicketHeader"));
 app.use("/Api/V1", require("./Route/Api/TicketBody"));
-
-app.listen(process.env.PORT, () => {
+///SOCKET
+const http = require("http").createServer(app);
+const io = require("socket.io")(http);
+io.on("connection", (socket) => {
+  console.log("User Connected");
+});
+http.listen(process.env.PORT, () => {
   console.log(`APP STARTED ${process.env.PORT}`);
 });
