@@ -1,0 +1,303 @@
+
+
+
+
+@media (max-width: 992px) { 
+	div#top_menu {
+		display: none;
+	}
+	.card-img-top {
+    height: 120px;
+    width: 340px;
+	}
+
+}
+
+/*@media (max-width: 762px) { */
+	@media (max-width: 762px) { 
+	body {
+		overflow-x:hidden; 
+	}
+
+	div#header {
+		height: 40px;
+		padding: 0;
+		margin-bottom: 1px;
+	}
+
+	#giris, #kasa_alani {
+		display: none;
+	}
+	div#header_container {
+		background: #ffffff;
+		border-bottom: 2px solid #000000;
+	}
+	div#main_container {
+		margin-top: 0px!important;
+	}
+
+	#mobil_menu {
+		float: left;
+		display: block;
+		width: 45px;
+		text-align: center;
+	}
+	#mobil_menu i {
+	font-size: 38px;
+	font-weight: bolder;
+	margin-top: 3px;
+	margin: 0;
+	}
+	i#mobil_account {
+	    display: block;
+	    line-height: 50px;
+	    padding-right: 10px;
+	    font-size: 36px;
+	}
+	div#bilgi {
+
+	}
+	.bilgi1 {
+		font-size: 13px;
+	}
+	div#index_urunler {
+		margin-top: 0!important;
+	}
+	.card-img-top {
+    height: 120px;
+    width: 340px;
+	}
+	#index_urunler  {
+		margin: 0;
+	}
+
+	div#bilgi {
+    height: 25px;
+    padding-top: 6px;
+    width: 100%;
+    display: flex;
+	}
+
+	div#logom {
+    float: left;
+    margin-top: 6px;
+    margin-left: 5px;
+	}
+	div#logom img{
+		height: 32px;
+	}
+	#logo_mobil {
+		display: block;
+		/*padding-right: 10px;*/
+		float: right;
+		height: 30px;
+		margin-top: 7px;
+		border-radius: 5px;
+		background: red;
+		/*min-width: calc(100% - 240px);*/
+		max-width: calc(100% - 190px);
+		margin-right: 10px;
+	}
+	#logo_mobil a {
+		color: white;
+		text-decoration: none;
+	}
+	#logo_mobil a:hover {
+		color: white;
+		text-decoration: none;
+	}
+	div#logo_mobil span {
+	    line-height: 30px;
+	    color: white;
+	}
+	span#mobil_kasa_text {
+	    padding-left: 3px;
+	    padding-right: 3px;
+	    font-size: 16px;
+	    font-weight: bolder;
+	}
+	span.buyuk {
+	    font-size: 16px;
+	    padding-right: 3px;
+	    font-weight: bolder;
+	}
+	span.kucuk {
+    	font-size: 12px;
+	}
+	.urun_ust_kisim {
+		padding-bottom: 40px;
+	}
+	.urun_title {
+		width: 100%;
+		left: 0;
+		padding-right: 5px;
+		padding-left: 5px;
+		background: #82a7c770;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		font-size: 13px;
+		line-height: 30px;
+	}
+
+	#mobil_durum {
+		display: block;
+
+		/*height: 25px;*/
+		line-height: 20px;
+		text-align: center;
+		font-size: 12px;
+		margin-top: 5px;
+	}
+	#mobil_fixed {
+    	display: block;
+    	position: fixed;
+    	bottom: 0px;
+    	z-index: 5;
+    	background: #f7f7f7;
+    	width: 100%;
+    	height: 35px;
+    	color: #87898f;
+ 	}
+ 	#mobil_fixed div{
+ 		background-color: ##0081b5;
+    	width: 33.33%;
+    	float: left;
+    	line-height: 35px;
+    	text-align: center;
+    	/*border-top: 1px solid #87898f;*/
+    	border-right: 1px solid #87898f;
+    	/*border-bottom: 1px solid #87898f;*/
+ 	}
+ 	#mobil_fixed a {
+ 		color: #87898f;
+ 	}
+ 	#mobil_fixed .active_bar a {
+ 		color: #ffffff;
+ 	}
+ 	#mobil_fixed div:nth-child(1) {
+ 		/*border-left: 1px solid #87898f;*/
+ 	}
+ 	body {
+ 		padding-bottom: 35px;
+ 	}
+	.image_product_div {
+	    height: fit-content;
+	}
+	.card-footer {
+		background-color: white;
+		padding: 0;
+	}
+	button.son_fiyattan_hemen_al {
+		border-radius: 5px;
+		margin-bottom: 5px;
+	}
+
+	.accordion h2.mb-0 {
+    text-align: center;
+    height: 30px;
+    line-height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+	}
+	button.btn.chat_button {
+	    padding: 0;
+	    color: #9e9e9e;
+	    background-color: white;
+	}
+
+	.accordion .card {
+	    border: none;
+	}
+	div.accordion {
+   	 margin-bottom: 10px;
+	}
+
+
+	#hizli_menu {
+		display: none;
+	}
+
+	.w3_whatsapp_btn {
+		background-image: url('../img/what_icon.png');
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		display: inline-block !important;
+		position: relative;
+		font-family: Arial,sans-serif;
+		letter-spacing: .4px;
+		cursor: pointer;
+		font-weight: 400;
+		text-transform: none;
+		color: #ffffff!important;;
+		border-radius: 2px;
+		background-color: #5cbe4a;
+		background-repeat: no-repeat;
+		line-height: 1.2;
+		text-decoration: none;
+		text-align: left;
+		width: 100%;
+		}
+		.w3_whatsapp_btn_small {
+		font-size: 12px;
+		background-size: 16px;
+		background-position: 5px 2px;
+		padding: 3px 6px 3px 25px;
+		}
+
+		.w3_whatsapp_btn_medium {
+		font-size: 16px;
+		background-size: 20px;
+		background-position: 4px 2px;
+		padding: 4px 6px 4px 30px;
+		}
+
+		.w3_whatsapp_btn_large {
+		font-size: 16px;
+		background-size: 20px;
+		background-position: 5px 5px;
+		padding: 8px 6px 8px 30px;
+		color: #fff;
+		}
+		
+	a.whatsapp { color: #fff;    text-align: center;} 
+
+
+	.col-lg-4 {
+	    margin-top: 10px;
+	}
+	#index_urunler .card-notify-badge2 {
+		position: static;
+	}
+
+
+	.col-md-4.border-none {
+	    border: none;
+	    padding: 0;
+	    text-align: center;
+    	padding-left: 25px;
+	}
+	div#siparislerim_title div {
+	    padding: 0; 
+	    text-align: center;
+	    font-size: 12px;
+	}
+	.sipaprislerim_fiyat_veri {
+		text-align: left;
+		font-weight: bolder;
+	}
+	.sipaprislerim_fiyat_veri span {
+		float: left!important;
+	}
+	.siparislerim_icerik .alert{
+		text-align: center;
+	}
+	#zoomer {
+		display: none;
+	}
+	.whats_share {
+		display: block;
+	}
+	#dropdown_mobil {
+    	display: block;
+    	text-align: center;
+ }
+}

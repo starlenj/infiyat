@@ -11,7 +11,7 @@ const SessionWrapper = (Component) => (props) => {
   } else {
     //TOKEN VALID
     let SessionResponse = axios.post(
-      "http://localhost:3000/Api/V1/ValidToken",
+      "http://91.102.164.214:3000/Api/V1/ValidToken",
       {
         token: localStorage.getItem("inToken"),
       }

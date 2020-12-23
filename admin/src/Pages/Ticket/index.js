@@ -152,35 +152,36 @@ class Ticket extends Component {
                     <div class="card-header">Chat</div>
                     <div class="card-body height3">
                       <ul class="chat-list">
-                        {this.state.Data.map((Body) =>
-                          Body.Body.data.map((TicketBody) => (
-                            <li
-                              class={
-                                TicketBody.MessageType === "Response"
-                                  ? "in"
-                                  : "out"
-                              }
-                            >
-                              <div class="chat-img">
-                                <img
-                                  alt="Avtar"
-                                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                                />
-                              </div>
-                              <div class="chat-body">
-                                <div class="chat-message">
-                                  <h5>{Body.UserName}</h5>
-                                  <p>{TicketBody.Message}</p>
-                                  <p>
-                                    {moment(TicketBody.createdAt).format(
-                                      "DD.MM.YYYY HH:MM:SS"
-                                    )}
-                                  </p>
+                        {this.state.Data.Body !== null &&
+                          this.state.Data.map((Body) =>
+                            Body.Body.data.map((TicketBody) => (
+                              <li
+                                class={
+                                  TicketBody.MessageType === "Response"
+                                    ? "in"
+                                    : "out"
+                                }
+                              >
+                                <div class="chat-img">
+                                  <img
+                                    alt="Avtar"
+                                    src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                  />
                                 </div>
-                              </div>
-                            </li>
-                          ))
-                        )}
+                                <div class="chat-body">
+                                  <div class="chat-message">
+                                    <h5>{Body.UserName}</h5>
+                                    <p>{TicketBody.Message}</p>
+                                    <p>
+                                      {moment(TicketBody.createdAt).format(
+                                        "DD.MM.YYYY HH:MM:SS"
+                                      )}
+                                    </p>
+                                  </div>
+                                </div>
+                              </li>
+                            ))
+                          )}
                       </ul>
                     </div>
                   </div>

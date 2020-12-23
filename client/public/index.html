@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://www.infiyatin.com//assets/css/style.css?1608497373" rel="stylesheet" />
+  <link href="https://www.infiyatin.com//assets/css/sidebar.css?1608496166" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/css/style609d.css?1608399548" rel="stylesheet" />
+  <link href="assets/css/responsive609d.css?1608399548" rel="stylesheet" />
+  <link href="assets/css/sidebar609d.css?1608399548" rel="stylesheet" />
+  <link href="assets/footable/css/footable.bootstrap.min.css" rel="stylesheet" />
+
+  <link href="https://www.infiyatin.com//assets/css/home.css?1608497373" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/flip/flipclock.css" />
+  <link rel="stylesheet" href="assets/reboot.css" />
+  <link rel="stylesheet" href="assets/cookie/cookiealert.css" />
+  <link rel="stylesheet" href="assets/gerisayim/jquery.countdown.css" />
+
+  <script src="assets/jquery/jquery-3.4.1.min.js"></script>
+  <script src="assets/js/moment-with-locales.min.js"></script>
+
+  <script src="assets/js/moment-with-locales.min.js" integrity="sha256-AdQN98MVZs44Eq2yTwtoKufhnU+uZ7v2kXnD5vqzZVo="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/tr.js"
+    integrity="sha256-nVA6aRSQuRLGLSqtxE/RRKTymG1QwvyvvH5w8jORUwM=" crossorigin="anonymous"></script>
+  <script src="assets/footable/js/footable609d.js?1608399548"></script>
+  <script src="assets/gerisayim/jquery.plugin.min.js"></script>
+  <script src="assets/gerisayim/jquery.countdown.min.js"></script>
+  <script src="assets/gerisayim/jquery.countdown-tr.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/bootstrap/js/bootbox.min.js"></script>
+  <script src="assets/js/main609d.js?1608399548"></script>
+  <script src="assets/bootstrap/js/bootbox.locales.min.js"></script>
+
+  <script src="assets/flip/flipclock.js"></script>
+  <script src="https://www.infiyatin.com/assets/js/jssor.slider-28.0.0.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    window.jssor_2_slider_init = function () {
+      var jssor_2_options = {
+        $AutoPlay: 1,
+        $ArrowNavigatorOptions: {
+          $Class: $JssorArrowNavigator$,
+        },
+        $BulletNavigatorOptions: {
+          $Class: $JssorBulletNavigator$,
+          $SpacingX: 5,
+          $SpacingY: 5,
+        },
+      };
+
+      var jssor_2_slider = new $JssorSlider$("jssor_1", jssor_2_options);
+
+      /*#region responsive code begin*/
+
+      var MAX_WIDTH = 400;
+
+      function ScaleSlider() {
+        var containerElement = jssor_2_slider.$Elmt.parentNode;
+        var containerWidth = containerElement.clientWidth;
+
+        if (containerWidth) {
+          var expectedWidth = Math.min(
+            MAX_WIDTH || containerWidth,
+            containerWidth
+          );
+
+          jssor_2_slider.$ScaleWidth(expectedWidth);
+        } else {
+          window.setTimeout(ScaleSlider, 30);
+        }
+      }
+
+      ScaleSlider();
+
+      $Jssor$.$AddEvent(window, "load", ScaleSlider);
+      $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+      $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+      /*#endregion responsive code end*/
+    };
+  </script>
+  <script type="text/javascript">jssor_1_slider_init();
+  </script>
+
+  <style>
+    /*jssor slider loading skin double-tail-spin css*/
+    .jssorl-004-double-tail-spin img {
+      animation-name: jssorl-004-double-tail-spin;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    @keyframes jssorl-004-double-tail-spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /*jssor slider bullet skin 031 css*/
+    .jssorb031 {
+      position: absolute;
+    }
+
+    .jssorb031 .i {
+      position: absolute;
+      cursor: pointer;
+    }
+
+    .jssorb031 .i .b {
+      fill: #000;
+      fill-opacity: 0.6;
+      stroke: #fff;
+      stroke-width: 1600;
+      stroke-miterlimit: 10;
+      stroke-opacity: 0.8;
+    }
+
+    .jssorb031 .i:hover .b {
+      fill: #fff;
+      fill-opacity: 1;
+      stroke: #000;
+      stroke-opacity: 1;
+    }
+
+    .jssorb031 .iav .b {
+      fill: #fff;
+      stroke: #000;
+      stroke-width: 1600;
+      fill-opacity: 0.6;
+    }
+
+    .jssorb031 .i.idn {
+      opacity: 0.3;
+    }
+
+    /*jssor slider arrow skin 051 css*/
+    .jssora051 {
+      display: block;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    .jssora051 .a {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 360;
+      stroke-miterlimit: 10;
+    }
+
+    .jssora051:hover {
+      opacity: 0.8;
+    }
+
+    .jssora051.jssora051dn {
+      opacity: 0.5;
+    }
+
+    .jssora051.jssora051ds {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+  </style>
+
+
+  <title>infiyatin.com - Lüks Herkesin Hakkıdır</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+
+
+  <div id="root"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"
+    integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+  <script src="assets/cookie/cookiealert.js"></script>
+
+  <script src="assets/socket/socket609d.js?1608399548"></script>
+
+  <script src="https://code.jivosite.com/widget/bAWZD596bT" async></script>
+
+</body>
+
+</html>

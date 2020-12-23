@@ -1,0 +1,162 @@
+/*
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');*/
+@import url('../reboot.scss');
+#index_urunler .carbox {
+    font-family: 'Roboto';
+    max-width: 350px;
+}
+#index_urunler .carbox * {
+    font-family: 'Roboto';
+    /* color: white; */
+}
+
+#index_urunler .carbox .fab {
+    font-family: 'Font Awesome 5 Brands';
+}
+span.ilk_fiyat {
+  float: left;
+  margin-left: 6px;
+  font-size: 25px;
+}
+.product_item {
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+}
+
+#index_urunler .carbox {
+    overflow: hidden;
+    max-width: 100%;
+    background-color: #ffffff;
+    margin-left: 0px;
+    margin-top: 30px;
+    border-radius: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 0px 0px 0 rgba(0,0,0,0.16), 0 0px 10px 0 rgba(0,0,0,0.12);
+    transition: box-shadow .25s;
+}
+a.card-title.card-link {
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+
+
+#index_urunler .carbox:hover {
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.card-footer {
+    padding: 0px;
+    background-color: #fff;
+    
+}
+#index_urunler .img-carbox {
+    max-width: 100%;
+    height: 200px;
+    width: auto;
+    margin-bottom: 0px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    transition-duration: 1s;
+  }
+  
+#index_urunler .img-carbox:hover {
+transform: scale(1.03);
+  }
+
+
+/*#index_urunler .card-notify-badge {
+        position: absolute;
+        margin-top: 105px;
+    margin-left: 90px;
+     
+    
+        border-radius: 6px 6px;
+        padding: 5px 5px;
+        font-size: 14px;
+        z-index: 3;
+        color: white;
+        padding-left: 10px;
+      padding-right: 10px;
+        top: -5px;
+    }*/
+#index_urunler .card-notify-badge2 {
+        /*position: absolute;*/
+        left: 17px;
+        top: 190px;
+        height: 20px;
+        width: 350px;
+        text-align: center;
+        /*background: #f2d900;*/
+        color: #443c21;
+        font-size: 14px;
+        opacity: 2;
+        font-weight: normal;
+    }
+
+#index_urunler .card-notify-badge {
+  position: absolute;
+  left: calc(50% - 85px);
+  border-radius: 14px 14px;
+  padding: 5px 5px;
+  font-size: 14px;
+  z-index: 3;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  top: -16px;
+}
+#index_urunler .card-notify-badge.pembe {
+  background: #f200b9;
+  
+}
+#index_urunler .card-notify-badge.turuncu {
+  background: #ff951f;  
+ 
+}
+#index_urunler .card-notify-badge.mavi {
+  background: #00b5f2;
+  
+}
+
+span.gonderen {
+  padding-left: 10px;
+}
+#index_urunler .card-notify-badge2 h6 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+      /*margin-top: 3px;*/
+      background-color: #f7f7f7;
+      /*margin-right: 18px;
+      padding-left: 10px;
+      padding-right: 10px;*/
+      padding-top: 5px;
+      padding-bottom: 5px;
+}
+
+.slideshow {
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0px 0px 0 rgba(0,0,0,0.16), 0 0px 10px 0 rgba(0,0,0,0.12);
+    transition: box-shadow .25s;
+    width: 100%;
+
+}
+.slideshow:hover {
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+
+.son-fiyat-div i.fab.fa-whatsapp {
+    color: #4caf50;
+}

@@ -3,6 +3,11 @@ const Express = require("express");
 const app = Express();
 const Mongoose = require("mongoose");
 const cors = require("cors");
+
+//SocketIo Route
+
+const ProductController = require("./sockets/ProductController");
+
 require("dotenv").config();
 
 Mongoose.connect(process.env.MONGO_URI).then(() =>
@@ -34,11 +39,20 @@ app.use("/Api/V1", require("./Route/Api/OrderBody"));
 app.use("/Api/V1", require("./Route/Api/TicketHeader"));
 app.use("/Api/V1", require("./Route/Api/TicketBody"));
 ///SOCKET
-const http = require("http").createServer(app);
-const io = require("socket.io")(http);
-io.on("connection", (socket) => {
-  console.log("User Connected");
+const server = require("http").createServer(app);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "http://localhost:3001",
+    methods: ["GET", "POST"],
+    credentials: true
+  }
 });
-http.listen(process.env.PORT, () => {
+io.on("connection", async (socket) => {
+  console.log("User Connected");
+
+  ///ProductRoute
+  socket.emit("GetProductList", await ProductController.GetHomePageProduct());
+});
+server.listen(process.env.PORT, () => {
   console.log(`APP STARTED ${process.env.PORT}`);
 });
