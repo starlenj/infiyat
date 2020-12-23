@@ -6,6 +6,7 @@ const ImagesSchema = new mongoose.Schema(
     Url: { type: String, require: true },
     ImageType: { type: String, require: true },
     Status: { type: Boolean, default: true },
+    ProductId: { type: String, default: true },
   },
   {
     timestamps: true,

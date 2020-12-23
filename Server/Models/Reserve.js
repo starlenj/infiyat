@@ -4,7 +4,7 @@ const ReserveSchema = new mongoose.Schema(
   {
     ProductId: { type: String, require: true },
     UserId: { type: String, require: true },
-    ReserveTime: { type: Number, require: true },
+    ReserveTime: { type: Date, default: Date.now() },
     Status: { type: Number, default: 0 },
   },
   { timestamps: true }

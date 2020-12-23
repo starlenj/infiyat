@@ -1,13 +1,26 @@
-const Model = require("../Models/Product");
-
+const ProductModel = require("../Models/Product");
+const ReserverModel = require('../Models/Reserve');
+const SettingModel = require("../Models/Setting");
 module.exports = {
 
     async GetHomePageProduct() {
         try {
-            let ProductData = await Model.find({ Status: 1 });
+            const ProductData = await ProductModel.find({ Status: 1 });
             return ProductData;
         } catch (error) {
             console.error(error);
+        }
+    },
+    async RezerveProduct(ProductId, UserId) {
+        try {
+            const Reserver = new ReserverModel({
+                ProductId,
+                UserId,
+            }).save();
+            console.log(Reserver)
+
+        } catch (error) {
+
         }
     }
 }

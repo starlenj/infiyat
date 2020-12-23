@@ -13,8 +13,8 @@ require("dotenv").config();
 Mongoose.connect(process.env.MONGO_URI).then(() =>
   console.log("MONGODB CONNECTION")
 );
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true, limit: "900mb" }));
+app.use(bodyParser.json({ limit: "900mb" }));
 
 //API MIDDLEWARE
 
@@ -38,12 +38,13 @@ app.use("/Api/V1", require("./Route/Api/OrderHeader"));
 app.use("/Api/V1", require("./Route/Api/OrderBody"));
 app.use("/Api/V1", require("./Route/Api/TicketHeader"));
 app.use("/Api/V1", require("./Route/Api/TicketBody"));
+app.use("/Api/V1", require("./Route/Api/Upload"));
 ///SOCKET
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
   cors: {
     origin: "http://localhost:3001",
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
   }
 });
