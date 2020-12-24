@@ -94,18 +94,10 @@ class Product extends Component {
   async ImageUpload(e) {
     const formData = new FormData();
     formData.append("file", e.target.files[0]);
-    let CheckProductImage = await Post("CheckImageProduct", { ProductId: this.props.DataTableReducer.SelectData._id });
-    if (CheckProductImage.data === undefined) {
-      let ResponseImageUpload = await Post("UploadImage", formData);
-      this.setState({ ProductImage: ResponseImageUpload.filename });
-      let PostImageUrl = await Post("Images", { ProductId: this.props.DataTableReducer.SelectData._id, Name: this.state.ProductImage, Url: this.state.ProductImage, ImageType: "ProductProfile" })
-      toast.success("Resim Yükleme Başarılı");
-      setTimeout(() => { window.location.reload() }, 2000)
-    } else {
-      let UploadImage = await Put("Images", { Name: this.state.ProductImage, Url: this.state.ProductImage }, CheckProductImage.data[0]._id);
-      toast.success("Resim Güncelleme Başarılı");
-      setTimeout(() => { window.location.reload() }, 2000)
-    }
+    let ResponseImageUpload = await Post("UploadImage", formData);
+    this.setState({ ProductImage: ResponseImageUpload.filename });
+    let UploadImage = await Post("ProductImageUpload", { ProfilePicture: this.state.ProductImage, id: this.props.DataTableReducer.SelectData._id });
+    setTimeout(() => { window.location.reload() }, 2000)
   }
   render() {
     const { SelectData } = this.props.DataTableReducer;

@@ -43,7 +43,7 @@ app.use("/Api/V1", require("./Route/Api/Upload"));
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3001",
+    origin: "http://localhost:3002",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
   }

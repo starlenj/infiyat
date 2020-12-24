@@ -1,6 +1,7 @@
 const ProductModel = require("../Models/Product");
 const ReserverModel = require('../Models/Reserve');
 const SettingModel = require("../Models/Setting");
+const ImageModel = require('../Models/Images');
 module.exports = {
 
     async GetHomePageProduct() {
