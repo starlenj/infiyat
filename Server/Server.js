@@ -51,33 +51,7 @@ const io = require("socket.io")(server, {
 });
 io.on("connection", async (socket) => {
   console.log("User Connected", socket.id);
-
-  ///ProductRoute
-  socket.on("ProductListCategory1", () => "TEST")
-  socket.on("GetProductListCategory1", async (CategoryId) => {
-    let response = await ProductController.GetProductWithCategory(CategoryId);
-    socket.emit("ProductListCategory1", response);
-  }
-  );
-
-  socket.on("ProductListCategory2", () => "TEST")
-  socket.on("GetProductListCategory2", async (CategoryId) => {
-    let response = await ProductController.GetProductWithCategory(CategoryId);
-    socket.emit("ProductListCategory2", response);
-  }
-  );
-
-  socket.on("ProductListCategory3", () => "TEST")
-  socket.on("GetProductListCategory3", async (CategoryId) => {
-    let response = await ProductController.GetProductWithCategory(CategoryId);
-    socket.emit("ProductListCategory3", response);
-  }
-  );
-  socket.on("ReserveList", () => "Reserver List");
-  socket.on("GetReserveList", async (ProductId) => {
-    let response = await ReserveController.GetReserveProduct(ProductId)
-    socket.emit("ReserveList", response);
-  })
+  require("./socket_route/ProductRoute")(socket);
 });
 server.listen(process.env.PORT, () => {
   console.log(`APP STARTED ${process.env.PORT}`);
