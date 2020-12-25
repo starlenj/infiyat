@@ -94,12 +94,6 @@ function SideBar({ Oturum }) {
               </a>
             </li>
             <li class="nav-item">
-              <a href="/Category" class="nav-link ">
-                <i class="icon-copy"></i>
-                <span>Kategori</span>
-              </a>
-            </li>
-            <li class="nav-item">
               <a href="/Product" class="nav-link ">
                 <i class="icon-copy"></i>
                 <span>Ürün</span>

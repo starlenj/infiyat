@@ -20,10 +20,9 @@ class ProductNewForm extends Component {
         <div className="form-group">
           <Field name="CategoryId" className="form-control" component="select">
             <option>--Lütfen Kategori Seçiniz--</option>
-            {this.state.Category.length > 0 &&
-              this.state.Category.map((Category) => (
-                <option value={Category._id}>{Category.Name}</option>
-              ))}
+            <option value="0.05" >0.05</option>
+            <option value="0.50" >0.50</option>
+            <option value="1.00" >1.00</option>
           </Field>
         </div>
         <div className="form-group">

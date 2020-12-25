@@ -1,5 +1,5 @@
+
 import { React, Component } from 'react';
-import { List } from '../helper/service';
 export default class HomePageProductCard extends Component {
     state = { Product: [] };
     constructor(props) {
@@ -7,8 +7,8 @@ export default class HomePageProductCard extends Component {
     }
 
     async componentDidMount() {
-        this.props.socket.on("ProductList", async (data) => this.setState({ Product: data }));
-        this.props.socket.emit("GetProductList", { CategoryId: "0.05" });
+        this.props.socket.on("ProductListCategory2", async (data) => this.setState({ Product: data }));
+        this.props.socket.emit("GetProductListCategory2", { CategoryId: "0.50" });
         //Reserve Listen
         this.props.socket.on("ReserveList",
             async (data) => console.log(data))
@@ -27,7 +27,7 @@ export default class HomePageProductCard extends Component {
                         <div class="product_item" data_id="29" rate="0.05" ilk_fiyat="1000">
                             <div class="carbox">
                                 <div class="card-image">
-                                    <span class="card-notify-badge mavi">Son Fiyat <span class="duser_color">0.05 TL</span> Düşer </span>
+                                    <span class="card-notify-badge mavi">Son Fiyat <span class="duser_color">0.50 TL</span> Düşer </span>
 
                                     <a href="Product/info/29/Xiaomi%20Mi%20Band%204%20Ak%c4%b1ll%c4%b1%20Bileklik%20Siyah.html" class="card-title card-link"><img class="img-carbox" src={"http://localhost:3000/ProductImages/" + Product.ProfilePicture} alt={Product.Name} />
                                         <span class="card-notify-badge2 "><h6>{Product.Name}</h6></span></a>

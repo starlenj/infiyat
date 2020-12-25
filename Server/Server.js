@@ -7,9 +7,10 @@ const cors = require("cors");
 //SocketIo Route
 
 const ProductController = require("./sockets/ProductController");
+const ReserveController = require("./sockets/ReserveController");
 
 require("dotenv").config();
-
+app.use('/ProductImages', Express.static('Upload/Product'))
 Mongoose.connect(process.env.MONGO_URI).then(() =>
   console.log("MONGODB CONNECTION")
 );
@@ -43,16 +44,40 @@ app.use("/Api/V1", require("./Route/Api/Upload"));
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3002",
+    origin: "http://localhost:3001",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
   }
 });
 io.on("connection", async (socket) => {
-  console.log("User Connected");
+  console.log("User Connected", socket.id);
 
   ///ProductRoute
-  socket.emit("GetProductList", await ProductController.GetHomePageProduct());
+  socket.on("ProductListCategory1", () => "TEST")
+  socket.on("GetProductListCategory1", async (CategoryId) => {
+    let response = await ProductController.GetProductWithCategory(CategoryId);
+    socket.emit("ProductListCategory1", response);
+  }
+  );
+
+  socket.on("ProductListCategory2", () => "TEST")
+  socket.on("GetProductListCategory2", async (CategoryId) => {
+    let response = await ProductController.GetProductWithCategory(CategoryId);
+    socket.emit("ProductListCategory2", response);
+  }
+  );
+
+  socket.on("ProductListCategory3", () => "TEST")
+  socket.on("GetProductListCategory3", async (CategoryId) => {
+    let response = await ProductController.GetProductWithCategory(CategoryId);
+    socket.emit("ProductListCategory3", response);
+  }
+  );
+  socket.on("ReserveList", () => "Reserver List");
+  socket.on("GetReserveList", async (ProductId) => {
+    let response = await ReserveController.GetReserveProduct(ProductId)
+    socket.emit("ReserveList", response);
+  })
 });
 server.listen(process.env.PORT, () => {
   console.log(`APP STARTED ${process.env.PORT}`);

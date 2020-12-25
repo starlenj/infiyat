@@ -1,6 +1,8 @@
 import axios from "axios";
+import socketIOClient from 'socket.io-client';
 
 const SessionWrapper = (Component) => (props) => {
+  var socket = socketIOClient("http://localhost:3000");
   /*Önce Token varmı bakılacak daha sonra token valid et ondan sonra duruma göre
   rediret et
     */
@@ -13,7 +15,7 @@ const SessionWrapper = (Component) => (props) => {
     }
   );
   Session = SessionResponse;
-  return <Component {...props} session={Session} />;
+  return <Component socket={socket} {...props} session={Session} />;
 };
 
 export default SessionWrapper;

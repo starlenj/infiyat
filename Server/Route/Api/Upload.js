@@ -33,7 +33,11 @@ route.post('/UploadImage', upload.single('file'), (req, res) => {
     console.log(req.file);
     res.send(req.file)
 })
-
+route.post("/SendImage", async (req, res) => {
+    const { ProfilePicture } = req.body;
+    var filePath = path.dirname("../../Upload/" + ProfilePicture);
+    res.sendFile(filePath);
+});
 
 
 

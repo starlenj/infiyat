@@ -86,7 +86,7 @@ class Product extends Component {
       let response = await Get("Category", Product.CategoryId);
       ProductFilterData.push({
         ...Product,
-        Category: response.Name,
+        Category: Product.CategoryId,
       });
       this.setState({ Data: ProductFilterData });
     });

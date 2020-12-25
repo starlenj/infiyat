@@ -7,11 +7,10 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/home";
 import Socket from "./sockets/index";
 
-const Root = ({ refetch, session }) => (
+const Root = ({ refetch, session, socket }) => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" render={() => <Home session={session} />} />
-      <Route exact path="/test" render={() => <Socket session={session} />} />
+      <Route exact path="/" render={() => <Home session={session} socket={socket} />} />
     </Switch>
   </BrowserRouter>
 );

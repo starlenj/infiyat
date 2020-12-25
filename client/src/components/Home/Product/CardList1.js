@@ -1,5 +1,5 @@
+
 import { React, Component } from 'react';
-import { List } from '../helper/service';
 export default class HomePageProductCard extends Component {
     state = { Product: [] };
     constructor(props) {
@@ -7,8 +7,8 @@ export default class HomePageProductCard extends Component {
     }
 
     async componentDidMount() {
-        this.props.socket.on("ProductList", async (data) => this.setState({ Product: data }));
-        this.props.socket.emit("GetProductList", { CategoryId: "0.05" });
+        this.props.socket.on("ProductListCategory1", async (data) => this.setState({ Product: data }));
+        this.props.socket.emit("GetProductListCategory1", { CategoryId: "0.05" });
         //Reserve Listen
         this.props.socket.on("ReserveList",
             async (data) => console.log(data))
