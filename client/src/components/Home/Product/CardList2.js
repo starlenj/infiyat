@@ -27,7 +27,7 @@ export default class HomePageProductCard extends Component {
                         <div class="product_item" data_id="29" rate="0.05" ilk_fiyat="1000">
                             <div class="carbox">
                                 <div class="card-image">
-                                    <span class="card-notify-badge mavi">Son Fiyat <span class="duser_color">0.50 TL</span> Düşer </span>
+                                    <span class="card-notify-badge turuncu">Son Fiyat <span class="duser_color">0.50 TL</span> Düşer </span>
 
                                     <a href="Product/info/29/Xiaomi%20Mi%20Band%204%20Ak%c4%b1ll%c4%b1%20Bileklik%20Siyah.html" class="card-title card-link"><img class="img-carbox" src={"http://localhost:3000/ProductImages/" + Product.ProfilePicture} alt={Product.Name} />
                                         <span class="card-notify-badge2 "><h6>{Product.Name}</h6></span></a>

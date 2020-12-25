@@ -11,6 +11,7 @@ const Root = ({ refetch, session, socket }) => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" render={() => <Home session={session} socket={socket} />} />
+      <Route exact path="/Logout" component={() => { localStorage.removeItem("inToken"); window.location.href = "/" }} />
     </Switch>
   </BrowserRouter>
 );

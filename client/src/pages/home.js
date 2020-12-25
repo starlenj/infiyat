@@ -7,7 +7,7 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <Header socket={this.props.socket} /> <Footer />
+        <Header socket={this.props.socket} session={this.props.session} /> <Footer />
       </div>
     );
   }

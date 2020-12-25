@@ -30,10 +30,9 @@ Router.post("/Register", async (req, res) => {
   }
 });
 Router.post("/Login", async (req, res) => {
-  console.log(req.body.password);
   try {
-    var Email = req.body.email;
-    var Password = req.body.password;
+    var Email = req.body.Email;
+    var Password = req.body.Password;
     let CheckUser = await UserModel.find({ Email });
     if (CheckUser.length === 0) {
       HandleError(req, res, "Kullanıcı Kaydı Bulunmadı");

@@ -1,9 +1,16 @@
 import { Component } from "react";
+import Login from "./Home/Header/Login";
 import CardList1 from "./Home/Product/CardList1";
 import CardList2 from "./Home/Product/CardList2";
 import CardList3 from "./Home/Product/CardList3";
 
 export default class Header extends Component {
+    state = { Session: [], Logged: false }
+    componentDidMount() {
+        this.props.session.then((Session) => {
+            this.setState({ Session: Session.data.data.data[0], Logged: true })
+        })
+    }
     render() {
         return (
 
@@ -71,21 +78,61 @@ export default class Header extends Component {
                                 <span id="mobil_kasa_text"><img src="assets/KasaIcon_mobil.png" alt="Logo" style={{ maxWidth: 20, maxHeight: 20, margin: 3 }} />Kasam:</span><span class='buyuk'>Giriş yap</span></a>
 
                         </div>
+                        {this.state.Logged === false ? (
 
-                        <div id="giris">
-                            <div id="inputlar">
-                                <input type="text" name="kullanici_adi" class="form-control" placeholder="E-postanız" style={{ marginRight: 3 }} autocomplete="nope" required="true" />
-                                <input type="password" name="kullanici_sifre" class="form-control" placeholder="Şifreniz" autocomplete="nope" required="true" />
-                            </div>
-                            <div id="butonlar">
-                                <button type="submit" id="giris">Giriş</button>
-                                <button type="button" id="kayit" onclick="location.href = 'Login/kayit.html';">Üye Ol</button>
-                                <a id="g_login" href='../accounts.google.com/ServiceLogin432a.html'><img src="assets/google.png" class="social_login_icon" /></a>
-                                <a id="f_login" href='../www.facebook.com/login88a8.html'><img src="assets/facebook.png" class="social_login_icon" /></a>
-                            </div>
+                            <Login />
+                        ) : (
+                                <div id="giris">
+                                    <li class="nav-item dropdown" id="ust_profil">
+                                        <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    <i class="material-icons">arrow_drop_down</i>
 
-                        </div>
+                                                    <div id="my_email">{this.state.Session.Email}</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right " x-placement="bottom-end"
+                                            style={{
+                                                position: "absolute", transform: "translate3d(24px, 44px, 0px)", top: 0, left: 0
+                                                , willChange: "transform"
+                                            }}>
 
+                                            <a href="https://www.infiyatin.com/User/" class="dropdown-item">
+
+                                                <span>Özet Sayfam</span>
+                                            </a>
+                                            <a href="https://www.infiyatin.com/User/kredilerim" class="dropdown-item">
+
+                                                <span>Kredi Yükle</span>
+                                            </a>
+                                            <a href="https://www.infiyatin.com/User/siparislerim" class="dropdown-item" style={{ position: "relative" }}>
+
+                                                <span>Siparişlerim </span>
+                                            </a>
+                                            <a href="https://www.infiyatin.com/User/adreslerim" class="dropdown-item">
+
+                                                <span>Adreslerim</span>
+                                            </a>
+                                            <a href="https://www.infiyatin.com/User/profilim" class="dropdown-item">
+
+                                                <span>Profilim</span>
+                                            </a>
+                                            <a href="https://www.infiyatin.com/Support/" class="dropdown-item">
+
+                                                <span>Destek</span>
+                                            </a>
+
+                                            <div class="dropdown-divider"></div>
+                                            <a href="/Logout" class="dropdown-item">
+
+                                                <span>Çıkış Yap</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </div>
+                            )}
 
 
                         <div id="kasa_alani">
