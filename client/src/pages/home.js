@@ -3,7 +3,6 @@ import Header from "../components/header_new";
 import Footer from "../components/footer";
 
 export default class Home extends Component {
-
   render() {
     return (
       <div>

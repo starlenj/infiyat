@@ -268,9 +268,9 @@ export default class Header extends Component {
 
 
                     <div class="row" style={{ marginTop: 10 }} id="index_urunler">
-                        <CardList1 socket={this.props.socket} />
-                        <CardList2 socket={this.props.socket} />
-                        <CardList3 socket={this.props.socket} />
+                        <CardList1 socket={this.props.socket} session={this.props.session} />
+                        <CardList2 socket={this.props.socket} session={this.props.session} />
+                        <CardList3 socket={this.props.socket} session={this.props.session} />
                     </div>
 
                     <div class="row" style={{ margin: 0 }}>

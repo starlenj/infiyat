@@ -10,18 +10,13 @@ const ProductController = require("./sockets/ProductController");
 const ReserveController = require("./sockets/ReserveController");
 
 require("dotenv").config();
-app.use('/ProductImages', Express.static('Upload/Product'))
+app.use("/ProductImages", Express.static("Upload/Product"));
 Mongoose.connect(process.env.MONGO_URI).then(() =>
-  console.log("MONGODB CONNECTION")
+	console.log("MONGODB CONNECTION")
 );
 app.use(bodyParser.urlencoded({ extended: true, limit: "900mb" }));
 app.use(bodyParser.json({ limit: "900mb" }));
 
-//API MIDDLEWARE
-
-app.use((req, res, next) => {
-  next();
-});
 app.use(cors());
 //Routers
 app.use("/Api/V1", require("./Route/Api/User"));
@@ -43,16 +38,17 @@ app.use("/Api/V1", require("./Route/Api/Upload"));
 ///SOCKET
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
-  cors: {
-    origin: "http://localhost:3001",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
-  }
+	cors: {
+		origin: "http://localhost:3000",
+		methods: ["GET", "POST", "PUT", "DELETE"],
+		credentials: true,
+	},
 });
 io.on("connection", async (socket) => {
-  console.log("User Connected", socket.id);
-  require("./socket_route/ProductRoute")(socket);
+	console.log("User Connected", socket.id);
+	require("./socket_route/ProductRoute")(socket);
+	require("./socket_route/SonFiyatRoute")(socket);
 });
 server.listen(process.env.PORT, () => {
-  console.log(`APP STARTED ${process.env.PORT}`);
+	console.log(`APP STARTED ${process.env.PORT}`);
 });
