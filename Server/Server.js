@@ -3,16 +3,12 @@ const Express = require("express");
 const app = Express();
 const Mongoose = require("mongoose");
 const cors = require("cors");
-
-//SocketIo Route
-
-const ProductController = require("./sockets/ProductController");
-const ReserveController = require("./sockets/ReserveController");
+const User = require("./Models/User");
 
 require("dotenv").config();
 app.use("/ProductImages", Express.static("Upload/Product"));
 Mongoose.connect(process.env.MONGO_URI).then(() =>
-	console.log("MONGODB CONNECTION")
+  console.log("MONGODB CONNECTION")
 );
 app.use(bodyParser.urlencoded({ extended: true, limit: "900mb" }));
 app.use(bodyParser.json({ limit: "900mb" }));
@@ -35,20 +31,35 @@ app.use("/Api/V1", require("./Route/Api/OrderBody"));
 app.use("/Api/V1", require("./Route/Api/TicketHeader"));
 app.use("/Api/V1", require("./Route/Api/TicketBody"));
 app.use("/Api/V1", require("./Route/Api/Upload"));
+app.use("/Api/V1", require("./Route/Api/SonFiyatList"));
 ///SOCKET
+var OnlineUser = [];
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
-	cors: {
-		origin: "http://localhost:3000",
-		methods: ["GET", "POST", "PUT", "DELETE"],
-		credentials: true,
-	},
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  },
 });
 io.on("connection", async (socket) => {
-	console.log("User Connected", socket.id);
-	require("./socket_route/ProductRoute")(socket);
-	require("./socket_route/SonFiyatRoute")(socket);
+  console.log("User Connected", socket.id);
+  socket.emit("your id", socket.id);
+  socket.broadcast.emit("toplam_kullanici", OnlineUser.length);
+  //Total User
+  require("./socket_route/ProductRoute")(socket);
+  require("./socket_route/SonFiyatRoute")(socket);
+  socket.on("disconnect", () => {
+
+  });
 });
+
+io.use(async (socket, next) => {
+  let socketId = socket.id;
+  OnlineUser.push({ socketId });
+  socket.broadcast.emit("toplam_kullanici", OnlineUser.length);
+  next();
+})
 server.listen(process.env.PORT, () => {
-	console.log(`APP STARTED ${process.env.PORT}`);
+  console.log(`APP STARTED ${process.env.PORT}`);
 });
