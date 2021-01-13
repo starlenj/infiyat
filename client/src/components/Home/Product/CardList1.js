@@ -1,49 +1,59 @@
 import { React, Component } from "react";
-import { Post } from '../../../helper/service';
+import { toast } from "react-toastify";
+import { Post } from "../../../helper/service";
+import moment from "moment";
 export default class HomePageProductCard extends Component {
   state = { Product: [], Session: [], SonFiyatList: [] };
   constructor(props) {
     super(props);
-    this.props.session.then((Response) =>
-      this.setState({ Session: Response.data.data.data[0] })
-    );
   }
   componentDidMount() {
     this.GetProductList();
   }
+  async SonFiyatGor(ProductId) {
+    if (this.state.Session.length === 0) {
+      toast.error("Son fiyat görmek için lütfen oturum açınız");
+      return;
+    }
+
+    //son fiyat servis verisini gönder
+    let Response = await Post("/SonFiyatGoster", {
+      UserId: this.state.Session._id,
+      Email: this.state.Session.Email,
+      ProductId,
+      Price: "0.05",
+    });
+    console.log(Response);
+  }
   async GetProductList() {
     try {
-      var Data = []
-      let ProductList = await Post("GetProductWithCategory"
-        , { CategoryId: "0.05" });
+      var Data = [];
+      let ProductList = await Post("GetProductWithCategory", {
+        CategoryId: "0.05",
+      });
       ProductList.data.map(async (Product) => {
         let FiyatList = await this.GetSonFiyatList(Product);
-        Data.push(
-          {
-            ...Product,
-            FiyatList: FiyatList.data
-          }
-        );
+        Data.push({
+          ...Product,
+          FiyatList: FiyatList.data,
+        });
         this.setState({ Product: Data });
-      })
-
-      console.log(this.state.Product);
+      });
     } catch (e) { }
   }
   async GetSonFiyatList(Product) {
     try {
-      return await Post("GetProductFiyatList"
-        , { ProductId: Product._id });
-    } catch (e) { console.error(e) }
+      return await Post("GetProductFiyatList", { ProductId: Product._id });
+    } catch (e) {
+      console.error(e);
+    }
   }
   render() {
     return (
       <div class="col-md-4">
         {this.state.Product.length > 0 &&
           this.state.Product.sort((a, b) => (a.Price > b.Price ? -1 : 1)).map(
-
             (Product) => {
-              console.log(this.state.Product);
               return (
                 <div
                   class="product_item"
@@ -91,14 +101,20 @@ export default class HomePageProductCard extends Component {
                       <ul class="islem_secmisi">
                         {Product.FiyatList &&
                           Product.FiyatList.map((fiyat, index) => {
-                            console.log(fiyat);
                             return (
                               <li class={"my_last_5_id_" + index}>
-                                <div class="kullanan">a***e@h***.***</div>
+                                <div class="kullanan">
+                                  {fiyat.Email.charAt(0) + "***@****.***    "}
+                                  {"   "}
+                                </div>
                                 <div class="arrow"></div>
-                                <div class="zaman">25/11/2020 22:26:06</div>
+                                <div class="zaman">
+                                  {moment(fiyat.createdAt).format(
+                                    "DD.MM.YYYY HH:mm:ss"
+                                  )}
+                                </div>
                               </li>
-                            )
+                            );
                           })}
                       </ul>
                       <div class="card-footer">

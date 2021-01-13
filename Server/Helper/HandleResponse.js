@@ -13,10 +13,9 @@ module.exports = {
 
   HandleError: async (req, res, message) => {
     try {
-      console.log(message);
-      res.status(500).send({ status: 500, success: false, message });
+      res.status(200).send({ status: 200, success: false, message });
     } catch (e) {
-      res.status(500).send({ status: 500, success: false, message: "HATAA" });
+      res.status(500).send({ status: 500, success: false, message });
     }
   },
 };

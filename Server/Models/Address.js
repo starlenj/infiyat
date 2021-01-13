@@ -4,7 +4,10 @@ const UserAddressSchema = new mongoose.Schema(
   {
     Name: { type: String, require: true },
     UserId: { type: String, require: true },
-    Adress: { type: String, require: true },
+    Address: { type: String, require: true },
+    Il: { type: String, require: true },
+    Ilce: { type: String, require: true },
+    Semt: { type: String, require: true },
   },
   { timestamps: true }
 );

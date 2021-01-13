@@ -6,6 +6,7 @@ const UserHareketSchema = new mongoose.Schema(
     HareketTuru: { type: String, require: true },
     bakiye: { type: Number, default: 0 },
     status: { type: Boolean, default: false },
+    HareketTarihi: { type: String, default: Date.now }
   },
   { timestamps: true }
 );

@@ -44,7 +44,223 @@
 
   <script src="assets/flip/flipclock.js"></script>
 
+  <style type="text/css">
+    .frame {
+      /*height: 400px;*/
+      border-radius: 2px;
+      width: 100%;
+      /*box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);*/
+      overflow: hidden;
+      background: #f8f8f8;
+      color: #333;
+      font-family: "Roboto";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      display: grid;
+      grid-gap: 1px;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      align-items: center;
+      justify-content: center;
+    }
 
+    .card {
+      background: white;
+      /*height: 85%;*/
+      width: 50%;
+      justify-self: center;
+      display: flex;
+      flex-direction: column;
+      /*box-shadow: 1px 1px 10px rgba(128, 128, 128, 0.4);*/
+      border-radius: 0.3rem;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .card:first-child {
+      margin-left: 1rem;
+    }
+
+    .card:nth-child(3) {
+      margin-right: 1rem;
+    }
+
+    .card>* {
+      transition: all 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      -webkit-transform: scale(1.04);
+      transform: scale(1.04);
+    }
+
+    .card:hover .card-top {
+      background: #ff0000;
+    }
+
+    .card:hover .card-value {
+      color: #ff0000;
+    }
+
+    .card-1:hover~.bars>.stat>.bar-1>span {
+      width: 10%;
+    }
+
+    .card-1:hover~.bars>.stat>.bar-2>span {
+      width: 10%;
+    }
+
+    .card-1:hover~.bars>.stat>.bar-3>span {
+      width: 10%;
+    }
+
+    .card-2:hover~.bars>.stat>.bar-1>span {
+      width: 30%;
+    }
+
+    .card-2:hover~.bars>.stat>.bar-2>span {
+      width: 60%;
+    }
+
+    .card-2:hover~.bars>.stat>.bar-3>span {
+      width: 40%;
+    }
+
+    .card-3:hover~.bars>.stat>.bar-1>span {
+      width: 100%;
+    }
+
+    .card-3:hover~.bars>.stat>.bar-2>span {
+      width: 100%;
+    }
+
+    .card-3:hover~.bars>.stat>.bar-3>span {
+      width: 100%;
+    }
+
+    .card-top {
+      height: 25%;
+      width: 100%;
+      background: #ff1d25;
+      color: white;
+      font-weight: 600;
+      border-top-left-radius: 0.3rem;
+      border-top-right-radius: 0.3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-info {
+      height: 75%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-info>* {
+      text-align: center;
+    }
+
+    .card-cost {
+      margin-bottom: 1rem;
+    }
+
+    .card-value {
+      font-weight: 700;
+      font-size: 1.6rem;
+    }
+
+    .card-month {
+      font-size: 0.8rem;
+    }
+
+    .card-lines {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-line {
+      margin-bottom: 3px;
+      height: 4px;
+      background: #e0e0e0;
+    }
+
+    .bars {
+      height: 85%;
+      width: 95%;
+      background: white;
+      box-shadow: 3px 3px 5px rgba(128, 128, 128, 0.2);
+      grid-column: 1 / -1;
+      justify-self: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .card-4 {
+      margin-left: 1rem;
+    }
+
+    <style type="text/css">@media (max-width: 762px) {
+      .siparislerim_icerik div {
+        padding: 0;
+      }
+
+      .sipaprislerim_fiyat_text {
+        width: 100%;
+      }
+
+      .sipaprislerim_fiyat_veri {
+        width: 100%;
+      }
+    }
+
+
+    .row.border-bottom-rezerve {
+      border-bottom: 3px solid #b5abab;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      width: 100%;
+      margin: 0;
+    }
+
+    .alert {
+      margin-bottom: 0;
+    }
+
+    img.img-responsive {
+      width: 100%;
+    }
+
+    .clock .myspan {
+      float: left;
+      margin-right: 10px;
+      line-height: 20px;
+      font-weight: bolder;
+    }
+
+    .flip-clock-wrapper {
+      margin-top: 20px;
+    }
+
+    .head22 {
+      text-align: center;
+      background: #e0e0e0;
+      padding: 5px;
+      font-weight: bolder;
+    }
+
+    .payment_details {
+      width: 125px;
+      float: left;
+      font-weight: bolder;
+    }
+  </style>
+  </style>
   <title>infiyatin.com - Lüks Herkesin Hakkıdır</title>
 </head>
 
