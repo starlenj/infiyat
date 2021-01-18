@@ -10,20 +10,14 @@ class Home extends Component {
     state = { Session: [], Tutar: 0 }
     constructor(props) {
         super(props);
-
-        this.props.session.then((Response) =>
-            this.setState({ Session: Response.data.data.data[0] })
-        );
     }
     componentDidMount() {
         var islemTutari = localStorage.getItem("TUTAR");
         this.setState({ Tutar: islemTutari })
-        this.props.socket.on("your id", (data) => this.props.SetSocketId(data));
-        this.props.socket.on("toplam_kullanici", (data) => console.log(data));
     }
     async OdemeBildirim() {
         var UserHareketResponse = await Post("UserHareket", {
-            UserId: this.state.Session._id,
+            UserId: this.props.User._id,
             HareketTuru: "Havale",
             bakiye: parseFloat(parseFloat(this.state.Tutar) + parseFloat(1.4)).toFixed(2),
         })
@@ -205,9 +199,10 @@ class Home extends Component {
     }
 }
 
-const mapStateToProps = ({ Socketid }) => {
+const mapStateToProps = (props) => {
     return {
-        Socketid,
+        Socketid: props.Socket.Socketid,
+        User: props.User.User
     };
 };
 const mapDispatchToProps = {

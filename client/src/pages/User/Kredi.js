@@ -55,13 +55,13 @@ class Home extends Component {
                                         </a>
                                         <div class="collapse show" id="hizli_menu">
                                             <a
-                                                href="http://localhost:3000/Profile"
+                                                href="/Profile"
                                                 class="list-group-item list-group-item-action"
                                             >
                                                 Özet Sayfam
                     </a>
                                             <a
-                                                href="http://localhost:3000/Kredi"
+                                                href="/Kredi"
                                                 class="list-group-item list-group-item-action active"
                                             >
                                                 Kredi Yükle
@@ -73,31 +73,31 @@ class Home extends Component {
                                                 Siparişlerim
                     </a>
                                             <a
-                                                href="https://www.infiyatin.com/User/adreslerim"
+                                                href="/Adreslerim"
                                                 class="list-group-item list-group-item-action"
                                             >
                                                 Adreslerim
                     </a>
                                             <a
-                                                href="https://www.infiyatin.com/User/profilim"
+                                                href="/UserProfile"
                                                 class="list-group-item list-group-item-action"
                                             >
                                                 Profilim
                     </a>
                                             <a
-                                                href="https://www.infiyatin.com/Support/"
+                                                href="#"
                                                 class="list-group-item list-group-item-action"
                                             >
                                                 Destek Taleplerim
                     </a>
                                             <a
-                                                href="https://www.infiyatin.com/User/all_process"
+                                                href="#"
                                                 class="list-group-item list-group-item-action"
                                             >
                                                 Hareket Geçmişi
                     </a>
                                             <a
-                                                href="https://www.infiyatin.com/Login/logout"
+                                                href="/Logout"
                                                 class="list-group-item list-group-item-action"
                                             >
                                                 Çıkış

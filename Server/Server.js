@@ -32,6 +32,7 @@ app.use("/Api/V1", require("./Route/Api/TicketHeader"));
 app.use("/Api/V1", require("./Route/Api/TicketBody"));
 app.use("/Api/V1", require("./Route/Api/Upload"));
 app.use("/Api/V1", require("./Route/Api/SonFiyatList"));
+app.use("/Api/V1", require("./Route/Api/Mail"));
 ///SOCKET
 var OnlineUser = [];
 const server = require("http").createServer(app);

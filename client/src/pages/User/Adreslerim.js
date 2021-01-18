@@ -13,20 +13,15 @@ class Adreslerim extends Component {
         this.NewAddress = this.NewAddress.bind(this);
         this.UpdateAddress = this.UpdateAddress.bind(this);
         this.DeleteAddress = this.DeleteAddress.bind(this);
-        this.props.session.then((Session) => {
-            this.setState({
-                UserId: Session.data.data.data[0]._id
-            })
-        })
+
     }
     componentDidMount() {
-        this.props.socket.on("your id", (data) => this.props.SetSocketId(data));
-        this.props.socket.on("toplam_kullanici", (data) => console.log(data));
+
         this.GetAddress();
     }
     async GetAddress() {
-        var Session = await this.props.session
-        const UserAddress = await Post("/GetAddress", { UserId: Session.data.data.data[0]._id });
+
+        const UserAddress = await Post("/GetAddress", { UserId: this.props.User._id });
         this.setState({ AddressList: UserAddress.data });
 
 
@@ -115,14 +110,14 @@ class Adreslerim extends Component {
                                         </a>
                                         <div class="collapse show" id="hizli_menu">
                                             <a
-                                                href="http://localhost:3000/Profile"
+                                                href="/Profile"
                                                 class="list-group-item list-group-item-action"
                                             >
                                                 Özet Sayfam
                     </a>
                                             <a
-                                                href="http://localhost:3000/Kredi"
-                                                class="list-group-item list-group-item-action active"
+                                                href="/Kredi"
+                                                class="list-group-item list-group-item-action"
                                             >
                                                 Kredi Yükle
                     </a>
@@ -134,30 +129,30 @@ class Adreslerim extends Component {
                     </a>
                                             <a
                                                 href="/Adreslerim"
-                                                class="list-group-item list-group-item-action"
+                                                class="list-group-item list-group-item-action active"
                                             >
                                                 Adreslerim
                     </a>
                                             <a
-                                                href="https://www.infiyatin.com/User/profilim"
+                                                href="/UserProfile"
                                                 class="list-group-item list-group-item-action"
                                             >
                                                 Profilim
                     </a>
                                             <a
-                                                href="https://www.infiyatin.com/Support/"
+                                                href="#"
                                                 class="list-group-item list-group-item-action"
                                             >
                                                 Destek Taleplerim
                     </a>
                                             <a
-                                                href="https://www.infiyatin.com/User/all_process"
+                                                href="#"
                                                 class="list-group-item list-group-item-action"
                                             >
                                                 Hareket Geçmişi
                     </a>
                                             <a
-                                                href="https://www.infiyatin.com/Login/logout"
+                                                href="/Logout"
                                                 class="list-group-item list-group-item-action"
                                             >
                                                 Çıkış
@@ -483,9 +478,10 @@ class Adreslerim extends Component {
     }
 }
 
-const mapStateToProps = ({ Socketid }) => {
+const mapStateToProps = (props) => {
     return {
-        Socketid,
+        SocketId: props.Socket.SocketId,
+        User: props.User.User
     };
 };
 const mapDispatchToProps = {

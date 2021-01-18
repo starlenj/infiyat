@@ -12,6 +12,7 @@ class Home extends Component {
   componentDidMount() {
     this.props.socket.on("your id", (data) => this.props.SetSocketId(data));
     this.props.socket.on("toplam_kullanici", (data) => console.log(data));
+    console.log("HOME", Array.from(this.props.session));
   }
 
 

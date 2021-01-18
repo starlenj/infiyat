@@ -16,7 +16,7 @@ class Home extends Component {
     async GetOrderHeader() {
         let Session = await this.props.session;
         let response = await Post("GetOrderList", {
-            UserId: Session.data.data.data[0]._id
+            UserId: this.props.User._id
         })
         console.log(response);
     }
@@ -61,19 +61,19 @@ class Home extends Component {
                                         </a>
                                         <div class="collapse show" id="hizli_menu">
                                             <a
-                                                href="http://localhost:3000/Profile"
+                                                href="/Profile"
                                                 class="list-group-item list-group-item-action "
                                             >
                                                 Özet Sayfam
                     </a>
                                             <a
-                                                href="http://localhost:3000/Kredi"
+                                                href="/Kredi"
                                                 class="list-group-item list-group-item-action"
                                             >
                                                 Kredi Yükle
                     </a>
                                             <a
-                                                href="http://localhost:3000/Siparislerim"
+                                                href="/Siparislerim"
                                                 class="list-group-item list-group-item-action active"
                                             >
                                                 Siparişlerim
@@ -85,7 +85,7 @@ class Home extends Component {
                                                 Adreslerim
                     </a>
                                             <a
-                                                href="#"
+                                                href="/UserProfile"
                                                 class="list-group-item list-group-item-action"
                                             >
                                                 Profilim
@@ -164,9 +164,10 @@ class Home extends Component {
     }
 }
 
-const mapStateToProps = ({ Socketid }) => {
+const mapStateToProps = (props) => {
     return {
-        Socketid,
+        Socketid: props.Socket.SocketId,
+        User: props.User.User
     };
 };
 const mapDispatchToProps = {

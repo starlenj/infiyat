@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Post } from "../helper/service";
 import { SetSocketId } from '../reducer/actions/socket_action'
+import { SetUser } from '../reducer/actions/user_action'
 import { GetBakiye } from '../reducer/actions/user_action'
 import { connect } from 'react-redux';
 import Login from "./Home/Header/Login";
@@ -12,15 +13,24 @@ class Header extends Component {
     super(props);
   }
   async componentDidMount() {
+    let Session = await this.props.session
 
+    if (Session !== undefined) {
+      console.log(Session);
+      if (Session.message !== "Token Geçersiz") {
+        this.props.SetUser(Session.data.data.data);
+        this.setState({ Logged: true })
+      }
+    }
     this.GetBakiye();
   }
   async GetBakiye() {
-    let Session = await this.props.session
-    if (Session.data.message !== "Token Geçersiz") {
-      this.setState({ Logged: true, Session: Session.data.data.data[0] })
-      var UserResponse = await Post("GetBakiye", { UserId: Session.data.data.data[0]._id });
+
+    if (this.props.User) {
+      this.setState({ Session: this.props.User._id })
+      var UserResponse = await Post("GetBakiye", { UserId: this.props.User._id });
       this.props.GetBakiye(UserResponse.data);
+
     }
   }
   render() {
@@ -104,7 +114,7 @@ class Header extends Component {
                         <div class="media-body">
                           <i class="material-icons">arrow_drop_down</i>
 
-                          <div id="my_email">{this.state.Session.Email}</div>
+                          <div id="my_email">{this.props.User.Email}</div>
                         </div>
                       </div>
                     </a>
@@ -145,13 +155,13 @@ class Header extends Component {
                         <span>Adreslerim</span>
                       </a>
                       <a
-                        href="https://www.infiyatin.com/User/profilim"
+                        href="/UserProfile"
                         class="dropdown-item"
                       >
                         <span>Profilim</span>
                       </a>
                       <a
-                        href="https://www.infiyatin.com/Support/"
+                        href="#"
                         class="dropdown-item"
                       >
                         <span>Destek</span>
@@ -182,10 +192,7 @@ class Header extends Component {
                 <i
                   class="fas fa-plus"
                   id="kredi_plus"
-                  data-toggle="popover"
-                  data-placement="top"
-                  data-content="Önce üye girişi yapmalısınız."
-                  data-original-title=""
+
                   title=""
                 ></i>
                 <span style={{ textAlign: "right" }}>
@@ -262,12 +269,14 @@ class Header extends Component {
 const mapStateToProps = (props) => {
   return {
     Socketid: props.Socket.Socketid,
-    UserBakiye: props.User.UserBakiye
+    UserBakiye: props.User.UserBakiye,
+    User: props.User.User
   };
 };
 const mapDispatchToProps = {
   SetSocketId,
-  GetBakiye
+  GetBakiye,
+  SetUser
 };
 export default connect(
   mapStateToProps,

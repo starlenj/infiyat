@@ -1,7 +1,8 @@
 import { React, Component } from 'react';
 import { Post } from '../../../helper/service';
-
-export default class Login extends Component {
+import { SetUser } from '../../../reducer/actions/user_action';
+import { connect } from 'react-redux';
+class Login extends Component {
     state = { UserName: "", Password: "", FormValid: true };
     constructor(props) {
         super(props);
@@ -11,7 +12,7 @@ export default class Login extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
     async Login() {
-        console.log(this.state)
+
         if (this.state.UserName !== "" && this.state.Password !== "") {
             let login = await Post("Login", { Email: this.state.UserName, Password: this.state.Password })
             if (login.success) {
@@ -30,7 +31,7 @@ export default class Login extends Component {
                     </div>
                     <div id="butonlar">
                         <button type="button" id="giris" onClick={() => this.Login()} >Giriş</button>
-                        <button type="button" id="kayit" onClick="location.href = 'Login/kayit.html';">Üye Ol</button>
+                        <button type="button" id="kayit" onClick={() => window.location.href = "/Register"}>Üye Ol</button>
                         <a id="g_login" href='https://accounts.google.com/ServiceLogin432a.html'><img src="assets/google.png" class="social_login_icon" /></a>
                         <a id="f_login" href='https://www.facebook.com/login88a8.html'><img src="assets/facebook.png" class="social_login_icon" /></a>
                     </div>
@@ -39,3 +40,21 @@ export default class Login extends Component {
         )
     }
 }
+
+const mapStateToProps = (props) => {
+    return {
+        Socketid: props.Socket.Socketid,
+        UserBakiye: props.User.UserBakiye
+    };
+};
+const mapDispatchToProps = {
+
+    SetUser
+
+};
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Login);
+
+

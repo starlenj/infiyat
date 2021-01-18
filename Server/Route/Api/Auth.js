@@ -9,23 +9,24 @@ Router.post("/Register", async (req, res) => {
   try {
     const { Phone, Email, Password, Name } = req.body;
     const CheckUser = await UserModel.find({ Email });
-    console.log(CheckUser);
     if (CheckUser.length > 0) {
-      HandleError(req, res, "Kullanıcı Kaydı Mevcuttur");
+      return HandleError(req, res, "Kullanıcı Kaydı Mevcuttur");
     }
-    bcrypt.hash(Password, 10, (er, hash) => {
+    bcrypt.hash(Password, 10, async (er, hash) => {
       const NewUser = new UserModel({
         Email,
         Password: hash,
         Name,
         Phone,
-      }).save();
-      const token = jwt.sign({ data: NewUser }, process.env.SECRET, {
+      })
+      const NewUserReponse = await NewUser.save();
+      const token = jwt.sign({ data: NewUserReponse }, process.env.SECRET, {
         expiresIn: Math.floor(Date.now() / 1000) + 60 * 60,
       });
       HandleResponse(req, res, "Kullanıcı Kaydı Oluşturuldu", token);
     });
   } catch (e) {
+    console.error(e);
     HandleError(req, res, e);
   }
 });
@@ -41,7 +42,7 @@ Router.post("/Login", async (req, res) => {
     if (!IsValid) {
       HandleError(req, res, "Şifre Hatalı");
     }
-    const token = jwt.sign({ data: CheckUser }, process.env.SECRET, {
+    const token = jwt.sign({ data: CheckUser[0] }, process.env.SECRET, {
       expiresIn: Math.floor(Date.now() / 1000 + 60 * 60),
     });
     HandleResponse(req, res, "Kullanıcı Girişi Başarılı", token);

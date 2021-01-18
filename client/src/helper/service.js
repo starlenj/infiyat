@@ -2,6 +2,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+//const URL = "http://91.102.164.214:3000/Api/V1/";
 const URL = "http://localhost:4000/Api/V1/";
 export const Post = async (RequestUrl, Data) => {
 	try {
