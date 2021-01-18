@@ -20,8 +20,9 @@ class Adreslerim extends Component {
         this.GetAddress();
     }
     async GetAddress() {
-
-        const UserAddress = await Post("/GetAddress", { UserId: this.props.User._id });
+        let session = await this.props.session;
+        this.setState({ UserId: session.data.data.data._id })
+        const UserAddress = await Post("/GetAddress", { UserId: session.data.data.data._id });
         this.setState({ AddressList: UserAddress.data });
 
 

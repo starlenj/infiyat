@@ -74,7 +74,7 @@ export default class HomePageProductCard extends Component {
                         <img
                           class="img-carbox"
                           src={
-                            "http://localhost:4000/ProductImages/" +
+                            "http://91.102.164.214:3000/ProductImages/" +
                             Product.ProfilePicture
                           }
                           alt={Product.Name}

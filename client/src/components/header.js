@@ -17,7 +17,7 @@ class Header extends Component {
 
     if (Session !== undefined) {
       console.log(Session);
-      if (Session.message !== "Token Geçersiz") {
+      if (Session.data.message !== "Token Geçersiz") {
         this.props.SetUser(Session.data.data.data);
         this.setState({ Logged: true })
       }
