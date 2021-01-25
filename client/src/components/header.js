@@ -16,7 +16,6 @@ class Header extends Component {
     let Session = await this.props.session
 
     if (Session !== undefined) {
-      console.log(Session);
       if (Session.data.message !== "Token Geçersiz") {
         this.props.SetUser(Session.data.data.data);
         this.setState({ Logged: true })
@@ -79,7 +78,7 @@ class Header extends Component {
               <a href="/">
                 <img
                   style={{ maxWidth: 180 }}
-                  src="assets/logo.png"
+                  src="/assets/logo.png"
                   alt="Logo"
                 />
               </a>
@@ -161,7 +160,7 @@ class Header extends Component {
                         <span>Profilim</span>
                       </a>
                       <a
-                        href="#"
+                        href="/Destek"
                         class="dropdown-item"
                       >
                         <span>Destek</span>

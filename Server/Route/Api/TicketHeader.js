@@ -16,4 +16,9 @@ Router.post("/GetTicket", async (req, res) => {
   let ResponseData = await Model.find({ TicketType });
   HandleResponse(req, res, null, ResponseData);
 });
+Router.post("/GetUserTicket", async (req, res) => {
+  const { TicketType, UserId } = req.body;
+  let ResponseData = await Model.find({ TicketType, UserId });
+  HandleResponse(req, res, null, ResponseData);
+})
 module.exports = Router;

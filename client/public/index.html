@@ -16,36 +16,140 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet" />
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
-  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="assets/css/style609d.css?1608399548" rel="stylesheet" />
-  <link href="assets/css/responsive609d.css?1608399548" rel="stylesheet" />
-  <link href="assets/css/sidebar609d.css?1608399548" rel="stylesheet" />
-  <link href="assets/footable/css/footable.bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/style609d.css?1608399548" rel="stylesheet" />
+  <link href="/assets/css/responsive609d.css?1608399548" rel="stylesheet" />
+  <link href="/assets/css/sidebar609d.css?1608399548" rel="stylesheet" />
+  <link href="/assets/footable/css/footable.bootstrap.min.css" rel="stylesheet" />
 
-  <link href="assets/css/giris.css" rel="stylesheet">
+  <link href="/assets/css/giris.css" rel="stylesheet">
   <link href="https://www.infiyatin.com//assets/css/home.css?1608497373" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/flip/flipclock.css" />
-  <link rel="stylesheet" href="assets/reboot.css" />
-  <link rel="stylesheet" href="assets/cookie/cookiealert.css" />
-  <link rel="stylesheet" href="assets/gerisayim/jquery.countdown.css" />
+  <link rel="stylesheet" href="/assets/flip/flipclock.css" />
+  <link rel="stylesheet" href="/assets/reboot.css" />
+  <link rel="stylesheet" href="/assets/cookie/cookiealert.css" />
+  <link rel="stylesheet" href="/assets/gerisayim/jquery.countdown.css" />
 
   <script src="https://www.infiyatin.com//assets/jquery/jquery-3.4.1.min.js"></script>
 
-  <script src="assets/footable/js/footable609d.js?1608399548"></script>
-  <script src="assets/gerisayim/jquery.plugin.min.js"></script>
-  <script src="assets/gerisayim/jquery.countdown.min.js"></script>
-  <script src="assets/gerisayim/jquery.countdown-tr.js"></script>
+  <script src="/assets/footable/js/footable609d.js?1608399548"></script>
+  <script src="/assets/gerisayim/jquery.plugin.min.js"></script>
+  <script src="/assets/gerisayim/jquery.countdown.min.js"></script>
+  <script src="/assets/gerisayim/jquery.countdown-tr.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/bootstrap/js/bootbox.min.js"></script>
-  <script src="assets/bootstrap/js/bootbox.locales.min.js"></script>
+  <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/assets/bootstrap/js/bootbox.min.js"></script>
+  <script src="/assets/bootstrap/js/bootbox.locales.min.js"></script>
 
-  <script src="assets/flip/flipclock.js"></script>
+  <script src="/assets/flip/flipclock.js"></script>
 
   <style type="text/css">
+    .timeline-badge i.material-icons {
+      float: none;
+      width: 100%;
+      font-size: 18px;
+      margin: 0;
+      line-height: 40px;
+    }
+
+    .faq-nav {
+      flex-direction: column;
+      margin: 0 0 32px;
+      border-radius: 2px;
+      border: 1px solid #ddd;
+      box-shadow: 0 1px 5px rgba(85, 85, 85, 0.15);
+    }
+
+    .faq-nav .nav-link {
+      position: relative;
+      display: block;
+      margin: 0;
+      padding: 13px 16px;
+      background-color: #fff;
+      border: 0;
+      border-bottom: 1px solid #ddd;
+      border-radius: 0;
+      color: #616161;
+      transition: background-color .2s ease;
+    }
+
+    .faq-nav .nav-link:hover {
+      background-color: #f6f6f6;
+    }
+
+    .faq-nav .nav-link.active {
+      background-color: #f6f6f6;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.87);
+    }
+
+    .faq-nav .nav-link:last-of-type {
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+      border-bottom: 0;
+    }
+
+    .faq-nav .nav-link i.fa fas {
+      margin-right: 5px;
+      font-size: 18px;
+      position: relative;
+    }
+
+    .tab-content {
+      box-shadow: 0 1px 5px rgba(85, 85, 85, 0.15);
+    }
+
+    .tab-content .card {
+      border-radius: 0;
+    }
+
+    .tab-content .card-header {
+      padding: 15px 16px;
+      border-radius: 0;
+      background-color: #f6f6f6;
+    }
+
+    .tab-content .card-header h5 {
+      margin: 0;
+    }
+
+    .tab-content .card-header h5 button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.87);
+      text-align: left;
+      white-space: normal;
+    }
+
+    .tab-content .card-header h5 button:hover,
+    .tab-content .card-header h5 button:focus,
+    .tab-content .card-header h5 button:active,
+    .tab-content .card-header h5 button:hover:active {
+      text-decoration: none;
+    }
+
+    .tab-content .card-body p {
+      color: #616161;
+    }
+
+    .tab-content .card-body p:last-of-type {
+      margin: 0;
+    }
+
+    .accordion>.card:not(:first-child) {
+      border-top: 0;
+    }
+
+    .collapse.show .card-body {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    }
+
+
     .frame {
       /*height: 400px;*/
       border-radius: 2px;

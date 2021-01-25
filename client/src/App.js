@@ -12,6 +12,8 @@ import Siparis from "./pages/User/Siparis";
 import Odeme from "./pages/User/Odeme";
 import Adreslerim from "./pages/User/Adreslerim";
 import Register from "./pages/User/Register";
+import Destek from "./pages/User/Destek";
+import DestekDetay from "./pages/User/DestekDetay";
 
 const Root = ({ refetch, session, socket }) => (
   <BrowserRouter>
@@ -36,8 +38,18 @@ const Root = ({ refetch, session, socket }) => (
       />
       <Route
         exact
-        path="/UserProfile"
+        path="/userprofile"
         render={() => <UserProfile session={session} socket={socket} />}
+      />
+      <Route
+        exact
+        path="/Destek"
+        render={() => <Destek session={session} socket={socket} />}
+      />
+      <Route
+        exact
+        path="/Destek/Detay/:id"
+        render={() => <DestekDetay session={session} socket={socket} />}
       />
       <Route
         exact
