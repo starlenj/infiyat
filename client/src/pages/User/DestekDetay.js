@@ -29,12 +29,19 @@ class Destek extends Component {
     async SendTicket() {
         var path = window.location.pathname.split("/");
         if (this.state.Message !== "" && this.state.Title !== "") {
+            const response = await Post("SetTicketStatus", {
+                id: path[3],
+                Status: 0,
+            });
 
             if (path[3]) {
+                let session = await this.props.session;
+                let User = session.data.data.data;
                 let TicketBodyResult = await Post("TicketBody", {
                     HeaderId: path[3],
                     Message: this.state.Message,
-                    MessageType: "Request"
+                    MessageType: "Request",
+                    ResponseUser: User.Email
                 })
                 if (TicketBodyResult._id) {
                     toast.success("Yanıtınız iletildi.En kısa sürede cevap verilecektir..");
@@ -44,6 +51,18 @@ class Destek extends Component {
 
         } else {
             toast.error("Lütfen Konu ve içeriği giriniz..");
+        }
+    }
+    async CloseTicket() {
+        var path = window.location.pathname.split("/");
+        const response = await Post("SetTicketStatus", {
+            id: path[3],
+            Status: 3,
+        });
+        if (response) {
+            toast.success("Kaydınız başarıl ile kapatıldı");
+            setTimeout(() => window.location.href = "/Destek", 3000);
+
         }
     }
     async TicketDetail(HeaderId) {
@@ -190,13 +209,13 @@ class Destek extends Component {
 
 
 
-                                {this.state.Status === -1 && (
+                                {this.state.Status === 3 && (
                                     <form >
                                         <div class="form-group">
                                             <label for="input2">Yeni mesajınız</label>
                                             <textarea class="form-control" id="input2" rows="5" name="mesaj" required="" name="Message" onChange={this.HandleInput}></textarea>
                                         </div>
-                                        <button type="button" class="btn btn-primary">Tekrar aç</button> <a href="https://www.infiyatin.com/Support/kapat/8" class="btn btn-danger" style={{ float: "right" }}>Bu talebi kapat.</a>
+                                        <button type="button" class="btn btn-primary" onClick={this.SendTicket}>Tekrar aç</button> <button class="btn btn-danger" type="button" style={{ float: "right" }} onClick={this.CloseTicket}>Bu talebi kapat.</button>
                                     </form>
 
                                 )}
@@ -206,7 +225,7 @@ class Destek extends Component {
                                             <label for="input2">Yeni mesajınız</label>
                                             <textarea class="form-control" name="Message" onChange={this.HandleInput} id="input2" rows="5" name="mesaj" required=""></textarea>
                                         </div>
-                                        <button type="button" class="btn btn-primary" onClick={this.SendTicket}>Yanıtla</button> <a href="https://www.infiyatin.com/Support/kapat/8" class="btn btn-danger" style={{ float: "right" }}>Bu talebi kapat.</a>
+                                        <button type="button" class="btn btn-primary" onClick={this.SendTicket}>Yanıtla</button> <button class="btn btn-danger" type="button" style={{ float: "right" }} onClick={this.CloseTicket}>Bu talebi kapat.</button>
                                     </form>
 
                                 )}
@@ -217,7 +236,17 @@ class Destek extends Component {
                                             <label for="input2">Yeni mesajınız</label>
                                             <textarea class="form-control" id="input2" rows="5" name="mesaj" required="" name="Message" onChange={this.HandleInput}></textarea>
                                         </div>
-                                        <button type="button" class="btn btn-primary" onClick={this.SendTicket}>Yanıtla</button> <a href="https://www.infiyatin.com/Support/kapat/8" class="btn btn-danger" style={{ float: "right" }}>Bu talebi kapat.</a>
+                                        <button type="button" class="btn btn-primary" onClick={this.SendTicket}>Yanıtla</button> <button class="btn btn-danger" type="button" style={{ float: "right" }} onClick={this.CloseTicket}>Bu talebi kapat.</button>
+                                    </form>
+
+                                )}
+                                {this.state.Status === 2 && (
+                                    <form >
+                                        <div class="form-group">
+                                            <label for="input2">Yeni mesajınız</label>
+                                            <textarea class="form-control" id="input2" rows="5" name="mesaj" required="" name="Message" onChange={this.HandleInput}></textarea>
+                                        </div>
+                                        <button type="button" class="btn btn-primary" onClick={this.SendTicket}>Yanıtla</button> <button class="btn btn-danger" type="button" style={{ float: "right" }} onClick={this.CloseTicket}>Bu talebi kapat.</button>
                                     </form>
 
                                 )}

@@ -36,15 +36,18 @@ class Ticket extends Component {
     }
   }
   async HandleSubmit(value) {
+
     const response = await Post("SetTicketStatus", {
       id: this.props.DataTableReducer.SelectData._id,
       Status: 1,
     });
     if (response) {
+      const Session = await this.props.session;
       const ResponseBody = await Post("TicketBody", {
         HeaderId: this.props.DataTableReducer.SelectData._id,
         Message: value.Message,
         MessageType: "Response",
+        ResponseUser: Session.data.data.data[0].Email
       });
     }
     if (response) {
@@ -99,10 +102,10 @@ class Ticket extends Component {
           if (row.Status === 1) {
             return (
               <span style={{ color: "blue", fontweight: "bold" }}>
-                Yanıtlandı
+                Yanıtladınız
               </span>
             );
-          } else if (row.Status === 2) {
+          } else if (row.Status === 0) {
             return (
               <span style={{ color: "green", fontweight: "bold" }}>
                 Kayıt Cevap Bekliyor
@@ -114,8 +117,10 @@ class Ticket extends Component {
                 Kayıt Kapandı
               </span>
             );
-          } else {
-            return "İşlem Bekleniyor";
+          } else if (row.Status === 2) {
+            return <span style={{ color: "red", fontWeight: "bold" }}>
+              Kullanıcı  Kaydı Kapattı
+              </span>
           }
         },
       },
@@ -148,40 +153,37 @@ class Ticket extends Component {
             <div class="container content">
               <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="card">
-                    <div class="card-header">Chat</div>
+                  <div class="card" style={{ color: "black" }}>
                     <div class="card-body height3">
                       <ul class="chat-list">
-                        {this.state.Data.Body !== null &&
-                          this.state.Data.map((Body) =>
-                            Body.Body.data.map((TicketBody) => (
-                              <li
-                                class={
-                                  TicketBody.MessageType === "Response"
-                                    ? "in"
-                                    : "out"
-                                }
-                              >
-                                <div class="chat-img">
-                                  <img
-                                    alt="Avtar"
-                                    src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                                  />
+                        {this.props.DataTableReducer.SelectData.Body.data !== undefined &&
+                          this.props.DataTableReducer.SelectData.Body.data.map((TicketBody) => (
+                            <li
+                              class={
+                                TicketBody.MessageType === "Response"
+                                  ? "in"
+                                  : "out"
+                              }
+                            >
+                              <div class="chat-img">
+                                <img
+                                  alt="Avtar"
+                                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                />
+                              </div>
+                              <div class="chat-body">
+                                <div class="chat-message">
+                                  <h5>{TicketBody.ResponseUser}</h5>
+                                  <p>{TicketBody.Message}</p>
+                                  <p>
+                                    {moment(TicketBody.createdAt).format(
+                                      "DD.MM.YYYY HH:mm:SS"
+                                    )}
+                                  </p>
                                 </div>
-                                <div class="chat-body">
-                                  <div class="chat-message">
-                                    <h5>{Body.UserName}</h5>
-                                    <p>{TicketBody.Message}</p>
-                                    <p>
-                                      {moment(TicketBody.createdAt).format(
-                                        "DD.MM.YYYY HH:MM:SS"
-                                      )}
-                                    </p>
-                                  </div>
-                                </div>
-                              </li>
-                            ))
-                          )}
+                              </div>
+                            </li>
+                          ))}
                       </ul>
                     </div>
                   </div>

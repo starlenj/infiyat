@@ -27,11 +27,9 @@ class Destek extends Component {
             TicketType: "Ticket",
             UserId: User._id
         });
-        console.log(Tickets);
-        this.setState({ Tickets: Tickets.data });
+        this.setState({ Tickets: Tickets.data || [] });
     }
     async SendTicket() {
-        console.log(this.state);
         let session = await this.props.session;
         let User = session.data.data.data;
         if (this.state.Message !== "" && this.state.Title !== "") {
@@ -45,7 +43,8 @@ class Destek extends Component {
                 let TicketBodyResult = await Post("TicketBody", {
                     HeaderId: TicketHeaderResult._id,
                     Message: this.state.Message,
-                    MessageType: "Request"
+                    MessageType: "Request",
+                    ResponseUser: User.Email
                 })
                 if (TicketBodyResult._id) {
                     toast.success("Destek kaydınız açıldı en kısa zamanda dönüş yapılacaktır..");
@@ -191,7 +190,11 @@ class Destek extends Component {
                                                     <td>{item.Title}</td>
                                                     <td>{item.UserName}</td>
                                                     <td>{moment(item.updatedAt).format("DD.MM.YYYY HH:mm")}</td>
-                                                    <td>{item.Status === 1 ? "Kaydınız Cevap Bekleniyor" : (item.status === -1) ? "Kaydınız Kapatıldı" : "Kaydınız Cevaplandı"}</td>
+                                                    { item.Status === 0 && (<td><span>Kaydınız Cevap Bekliyor</span></td>)}
+                                                    { item.Status === 1 && (<td><span>Kaydınız Destek Tarafından Cevap Bekleniyor </span></td>)}
+                                                    { item.Status === 2 && (<td><span style={{ color: "red" }}>Kaydınız Kapattınız </span></td>)}
+                                                    { item.Status === 3 && (<td><span style={{ color: "red" }}>Kaydınız Destek Ekibi Tarafından Kapatıldı </span></td>)}
+
                                                 </tr>
                                             ))}
 

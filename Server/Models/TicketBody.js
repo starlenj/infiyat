@@ -5,6 +5,7 @@ const OptionsSchema = new mongoose.Schema(
     Message: { type: String, require: true },
     HeaderId: { type: String, require: true },
     MessageType: { type: String, require: true },
+    ResponseUser: { type: String, require: true },
   },
   {
     timestamps: true,
